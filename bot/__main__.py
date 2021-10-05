@@ -7,6 +7,38 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
 from bot.helper.utils import get_formatted_chat
 
 @app.on_message(filters.chat(from_chats) & filters.text & filters.incoming & filters.regex("#kukka") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer"))
+def work(client, message):
+    caption = None
+    msg = None
+    if remove_strings:
+      for string in remove_strings:
+        if message.media and not message.poll:
+          caption = message.caption.html.replace(string, replace_string)
+        elif message.text:
+          msg = message.text.html.replace(string, replace_string)
+    if advance_config:
+      try:
+        for chat in chats_data[message.chat.id]:
+          if caption:
+            message.copy(chat, caption=caption)
+          elif msg:
+            app.send_message(chat, msg, parse_mode="html")
+          else:
+            message.copy(chat)
+      except Exception as e:
+        LOG.error(e)
+    else:
+      try:
+        for chat in to_chats:
+          if caption:
+            message.copy(chat, caption=caption)
+          elif msg:
+            app.send_message(chat, msg)
+          else:
+            message.copy(chat)
+      except Exception as e:
+        LOG.error(e)
+        
 @app.on_message(filters.chat(from_chats) & filters.incoming & filters.photo | filters.video & filters.sticker & filters.regex("#kukka") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer"))
 def work(client, message):
     caption = None
