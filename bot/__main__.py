@@ -6,7 +6,7 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
 
-@app.on_message(filters.chat(from_chats) & filters.incoming & filters.regex("/kukka/") | filters.regex("/tanya/") | filters.regex("/curhat/") | filters.regex("/pamer/"))
+@app.on_message(filters.chat(from_chats) & filters.incoming & filters.regex("#kukka") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer"))
 def work(client, message):
     caption = None
     msg = None
