@@ -6,7 +6,7 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
 
-@app.on_message(filters.chat(from_chats) & filters.text & (filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer") & ~filters.regex("racun") & ~filters.regex("fitri") & ~filters.regex("rika") & ~filters.regex("fitrikhm") & ~filters.regex("https://t.me/racunshopeeidchannel") & ~filters.regex("https://t.me/racunshopee27") & ~filters.regex("https://t.me/RacunShopeeCH") & ~filters.regex("aff") & ~filters.regex("penghasilan") & ~filters.regex("testbadwords") & ~filters.regex("lakuemas") & ~filters.regex("kompen") & ~filters.regex("tokko") & ~filters.regex("kompensasi")))
+@app.on_message(filters.chat(from_chats) & (filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer") & ~filters.regex("racun") & ~filters.regex("fitri") & ~filters.regex("rika") & ~filters.regex("fitrikhm") & ~filters.regex("https://t.me/racunshopeeidchannel") & ~filters.regex("https://t.me/racunshopee27") & ~filters.regex("https://t.me/RacunShopeeCH") & ~filters.regex("aff") & ~filters.regex("penghasilan") & ~filters.regex("testbadwords") & ~filters.regex("lakuemas") & ~filters.regex("kompen") & ~filters.regex("tokko") & ~filters.regex("kompensasi")))
 def work(client, message):
     caption = None
     msg = None
@@ -38,40 +38,6 @@ def work(client, message):
             message.copy(chat)
       except Exception as e:
         LOG.error(e)
-        
-@app.on_message(filters.chat(from_chats) & filters.media & (filters.sticker & filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer") & ~filters.regex("racun") & ~filters.regex("fitri") & ~filters.regex("rika") & ~filters.regex("fitrikhm") & ~filters.regex("https://t.me/racunshopeeidchannel") & ~filters.regex("https://t.me/racunshopee27") & ~filters.regex("https://t.me/RacunShopeeCH") & ~filters.regex("aff") & ~filters.regex("penghasilan") & ~filters.regex("testbadwords") & ~filters.regex("lakuemas") & ~filters.regex("kompen") & ~filters.regex("tokko") & ~filters.regex("kompensasi")))
-def work(client, message):
-    caption = None
-    msg = None
-    if remove_strings:
-      for string in remove_strings:
-        if message.media and not message.poll:
-          caption = message.caption.html.replace(string, replace_string)
-        elif message.text:
-          msg = message.text.html.replace(string, replace_string)
-    if advance_config:
-      try:
-        for chat in chats_data[message.chat.id]:
-          if caption:
-            message.copy(chat, caption=caption)
-          elif msg:
-            app.send_message(chat, msg, parse_mode="html")
-          else:
-            message.copy(chat)
-      except Exception as e:
-        LOG.error(e)
-    else:
-      try:
-        for chat in to_chats:
-          if caption:
-            message.copy(chat, caption=caption)
-          elif msg:
-            app.send_message(chat, msg)
-          else:
-            message.copy(chat)
-      except Exception as e:
-        LOG.error(e)
-
         
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
