@@ -39,7 +39,7 @@ def work(client, message):
       except Exception as e:
         LOG.error(e)
         
-@app.on_message(filters.chat(from_chats) & filters.media & (filters.stickers & filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer") & ~filters.regex("racun") & ~filters.regex("fitri") & ~filters.regex("rika") & ~filters.regex("fitrikhm") & ~filters.regex("https://t.me/racunshopeeidchannel") & ~filters.regex("https://t.me/racunshopee27") & ~filters.regex("https://t.me/RacunShopeeCH") & ~filters.regex("aff") & ~filters.regex("penghasilan") & ~filters.regex("testbadwords") & ~filters.regex("lakuemas") & ~filters.regex("kompen") & ~filters.regex("tokko") & ~filters.regex("kompensasi")))
+@app.on_message(filters.chat(from_chats) & filters.media & (filters.sticker & filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer") & ~filters.regex("racun") & ~filters.regex("fitri") & ~filters.regex("rika") & ~filters.regex("fitrikhm") & ~filters.regex("https://t.me/racunshopeeidchannel") & ~filters.regex("https://t.me/racunshopee27") & ~filters.regex("https://t.me/RacunShopeeCH") & ~filters.regex("aff") & ~filters.regex("penghasilan") & ~filters.regex("testbadwords") & ~filters.regex("lakuemas") & ~filters.regex("kompen") & ~filters.regex("tokko") & ~filters.regex("kompensasi")))
 def work(client, message):
     caption = None
     msg = None
