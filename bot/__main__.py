@@ -15,9 +15,11 @@ def work(client, message):
       for string in remove_strings:
         if message.media and not message.poll:
           print("BlacklistHitted")
+          print(message)
           hasBlacklisted = True
         elif message.text:
           print("BlacklistHitted")
+          print(message)
           hasBlacklisted = True
 
     if hasBlacklisted == False :
