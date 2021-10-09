@@ -21,30 +21,29 @@ def work(client, message):
           print("BlacklistHitted")
           print(message)
           hasBlacklisted = True
-
-    if hasBlacklisted == False :
-      if advance_config:
-        try:
-          for chat in chats_data[message.chat.id]:
-            if caption:
-              message.copy(chat, caption=caption)
-            elif msg:
-              app.send_message(chat, msg, parse_mode="html")
-            else:
-              message.copy(chat)
-        except Exception as e:
-          LOG.error(e)
-      else:
-        try:
-          for chat in to_chats:
-            if caption:
-              message.copy(chat, caption=caption)
-            elif  msg:
-              app.send_message(chat, msg)
-            else:
-              message.copy(chat)
-        except Exception as e:
-          LOG.error(e)
+      if hasBlacklisted == False :
+        if advance_config:
+          try:
+            for chat in chats_data[message.chat.id]:
+              if caption:
+               message.copy(chat, caption=caption)
+              elif msg:
+                app.send_message(chat, msg, parse_mode="html")
+              else:
+               message.copy(chat)
+          except Exception as e:
+            LOG.error(e)
+        else:
+          try:
+           for chat in to_chats:
+             if caption:
+               message.copy(chat, caption=caption)
+             elif  msg:
+               app.send_message(chat, msg)
+             else:
+                message.copy(chat)
+          except Exception as e:
+            LOG.error(e)
         
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
