@@ -23,6 +23,7 @@ def work(client, message):
           hasBlacklisted = True
       else:
         hasBlacklisted = False
+        print(message.caption)
         if hasBlacklisted == False :
           if advance_config:
             try:
@@ -76,3 +77,4 @@ def forward(app, message):
       reply.delete()
 
 app.run()
+
