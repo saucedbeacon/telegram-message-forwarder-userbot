@@ -22,7 +22,8 @@ def work(client, message):
           print(message)
           hasBlacklisted = True
       else:
-       if hasBlacklisted == False :
+        hasBlacklisted = False
+        if hasBlacklisted == False :
           if advance_config:
             try:
               for chat in chats_data[message.chat.id]:
@@ -45,9 +46,9 @@ def work(client, message):
                   message.copy(chat)
               except Exception as e:
                 LOG.error(e)
-       else : 
-          print("Has Hitted")
-          
+          else : 
+            print("Has Hitted")
+
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
     if len(message.command) > 1:
