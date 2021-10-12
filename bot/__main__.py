@@ -53,8 +53,8 @@ def validator(client, message) :
                   print("Has Hitted")
                   message.reply_text("FAILED > GAGAL")
               elif str(message.chat.id) == str(-1001373874456) :
-                message.copy(int(-1001333654036))
-                message.copy(int(-1001183067327))
+                message.copy(int(1333654036))
+                message.copy(int(1183067327))
                 app.send_message(881581932, "#kukka Broadcast Successfull!")
               else: 
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
