@@ -11,7 +11,7 @@ def false():
 
 @app.on_message(filters.chat(from_chats) & (filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
-def validator() :
+def validator(message) :
     caption = None
     msg = None
     if remove_strings:
@@ -54,7 +54,7 @@ def work(client, message):
   if message.forward_from.id in vList:
     message.reply_text("Menfess Succesfully sent!")
     print("Working")
-    validator(client, message)
+    validator(message)
   else:
     message.reply_text("FAILED!")
     print("NWorking")
