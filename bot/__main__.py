@@ -26,6 +26,7 @@ def work(client, message):
       else:
         hasBlacklisted = False
         print(message)
+        print(str(remove_strings))
         if hasBlacklisted == False :
           if advance_config:
             try:
