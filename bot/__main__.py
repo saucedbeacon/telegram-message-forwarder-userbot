@@ -51,7 +51,8 @@ def validator(client, message) :
             print("Has Hitted")
             message.reply_text("FAILED > GAGAL")
         else: 
-          app.send_message(881581932, "ADA MENFESS GAGAL" + str(message.forward_from.id))
+          app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
+          app.send_message(881581932, "ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id))
           message.reply_text("https://t.me/c/1183067327/247117 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.")
             
 
