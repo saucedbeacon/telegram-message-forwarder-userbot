@@ -1,5 +1,5 @@
 import os
-import verified
+import validate
 import random
 from time import sleep
 from validate import vUser
