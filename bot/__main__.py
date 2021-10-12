@@ -11,7 +11,7 @@ def false():
 
 @app.on_message(filters.chat(from_chats) & (filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
-def validator(message) :
+def validator(client, message) :
     caption = None
     msg = None
     if remove_strings:
@@ -23,6 +23,7 @@ def validator(message) :
       else:
         hasBlacklisted = False
         print(message)
+        print(message.forward_from.id)
         print(str(remove_strings))
         if hasBlacklisted == False :
           if advance_config:
@@ -49,16 +50,6 @@ def validator(message) :
                 LOG.error(e)
           else : 
             print("Has Hitted")
-
-def work(client, message):
-  if message.forward_from.id in vList:
-    message.reply_text("Menfess Succesfully sent!")
-    print("Working")
-    validator(message)
-  else:
-    message.reply_text("FAILED!")
-    print("NWorking")
-    false
 
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
