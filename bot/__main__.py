@@ -12,7 +12,7 @@ def false():
 
 @app.on_message(filters.chat(from_chats) & (filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
-def work(client, message):
+def validator(client, message):
     caption = None
     msg = None
     if remove_strings:
@@ -51,7 +51,7 @@ def work(client, message):
           else : 
             print("Has Hitted")
 
-def validator(client, message):
+def work(client, message):
   if message.forward_from.id in vUser:
     message.reply_text("Menfess Succesfully sent!")
     work
