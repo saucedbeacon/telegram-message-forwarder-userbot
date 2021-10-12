@@ -24,9 +24,8 @@ def validator(client, message) :
             hasBlacklisted = False
             if hasBlacklisted == False :
               print(message)
-              print(message.forward_from.id)
               print(str(remove_strings))
-              if int(message.forward_from.id) in vList :
+              if int(message.forward_from.id) in vList |  :
                 message.reply_text("Sukses Validasi. Validation Success")
                 if advance_config:
                   try:
@@ -50,9 +49,13 @@ def validator(client, message) :
                         message.copy(chat)
                     except Exception as e:
                       LOG.error(e)
-                else : 
+                elif str(message.chat.id) == str(-1001373874456) : 
                   print("Has Hitted")
                   message.reply_text("FAILED > GAGAL")
+              elif str(message.chat.id) == str(-1001373874456) :
+                message.copy(-1001333654036)
+                message.copy(-1001183067327)
+                app.send_message(881581932, "#kukka Broadcast Successfull!")
               else: 
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id))
