@@ -19,42 +19,47 @@ def validator(client, message) :
         elif message.text:
           message.reply_text("Failed")
       else:
-        hasBlacklisted = False
-        print(message)
-        print(message.forward_from.id)
-        print(str(remove_strings))
-        if int(message.forward_from.id) in vList :
-          message.reply_text("Sukses Validasi. Validation Success")
-          if advance_config:
-            try:
-              for chat in chats_data[message.chat.id]:
-                if caption:
-                  message.copy(chat, caption=caption)
-                elif msg:
-                  app.send_message(chat, msg, parse_mode="html")
-                else:
-                  message.copy(chat)
-            except Exception as e:
-              LOG.error(e)
-            else:
-              try:
-                for chat in to_chats:
-                  if caption:
-                   message.copy(chat, caption=caption)
-                  elif msg:
-                    app.send_message(chat, msg)
-                else:
-                  message.copy(chat)
-              except Exception as e:
-                LOG.error(e)
-          else : 
-            print("Has Hitted")
-            message.reply_text("FAILED > GAGAL")
-        else: 
-          app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
-          app.send_message(881581932, "ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id))
-          message.reply_text("https://t.me/c/1183067327/247117 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.")
-            
+        while True:
+          try:
+            hasBlacklisted = False
+            if hasBlacklisted == False :
+              print(message)
+              print(message.forward_from.id)
+              print(str(remove_strings))
+              if int(message.forward_from.id) in vList :
+                message.reply_text("Sukses Validasi. Validation Success")
+                if advance_config:
+                  try:
+                    for chat in chats_data[message.chat.id]:
+                      if caption:
+                        message.copy(chat, caption=caption)
+                      elif msg:
+                        app.send_message(chat, msg, parse_mode="html")
+                      else:
+                        message.copy(chat)
+                  except Exception as e:
+                    LOG.error(e)
+                  else:
+                    try:
+                      for chat in to_chats:
+                        if caption:
+                          message.copy(chat, caption=caption)
+                        elif msg:
+                          app.send_message(chat, msg)
+                      else:
+                        message.copy(chat)
+                    except Exception as e:
+                      LOG.error(e)
+                else : 
+                  print("Has Hitted")
+                  message.reply_text("FAILED > GAGAL")
+              else: 
+                app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
+                app.send_message(881581932, "ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id))
+              message.reply_text("https://t.me/c/1183067327/247117 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.")
+            expect AttributeError :
+              app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
+              message.reply_text("Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117")                
 
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
