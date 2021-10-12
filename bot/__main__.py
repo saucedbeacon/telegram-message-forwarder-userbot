@@ -51,5 +51,34 @@ def validator(client, message) :
             print("Has Hitted")
             message.reply_text("FAILED > GAGAL")
         else: 
-          app.send_message(881581932, str(message.forward_from.id))
+          app.send_message(881581932, "ADA MENFESS GAGAL")
           message.reply_text("https://t.me/c/1183067327/247117 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.")
+            
+
+@app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
+def forward(app, message):
+    if len(message.command) > 1:
+      chat_id = get_formatted_chat(message.command[1], app)
+      if chat_id:
+        try:
+          offset_id = 0
+          limit = 0
+          if len(message.command) > 2:
+            limit = int(message.command[2])
+          if len(message.command) > 3:
+            offset_id = int(message.command[3])
+          for msg in app.iter_history(chat_id, limit=limit, offset_id=offset_id):
+            msg.copy(message.chat.id)
+            sleep(random.randint(1, 10))
+        except Exception as e:
+          message.reply_text(f"```{e}```")
+      else:
+        reply = message.reply_text("```Invalid Chat Identifier. Give me a chat id, username or message link.```")
+        sleep(5)
+        reply.delete()
+    else:
+      reply = message.reply_text("```Invalid Command ! Use /fwd {ChatID} {limit} {FirstMessageID}```")
+      sleep(20)
+      reply.delete()
+
+app.run()
