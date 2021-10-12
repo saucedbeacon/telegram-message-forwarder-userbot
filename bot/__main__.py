@@ -25,7 +25,7 @@ def validator(client, message) :
             if hasBlacklisted == False :
               print(message)
               print(str(remove_strings))
-              if int(message.forward_from.id) in vList |  :
+              if int(message.forward_from.id) in vList :
                 message.reply_text("Sukses Validasi. Validation Success")
                 if advance_config:
                   try:
