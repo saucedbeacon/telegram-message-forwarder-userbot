@@ -19,7 +19,7 @@ def validator(client, message) :
         elif message.text:
           message.reply_text("Failed")
       else:
-        while True:
+        if int(3) == int(3):
           try:
             hasBlacklisted = False
             if hasBlacklisted == False :
@@ -57,9 +57,9 @@ def validator(client, message) :
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id))
               message.reply_text("https://t.me/c/1183067327/247117 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.")
-            expect AttributeError :
-              app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
-              message.reply_text("Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117")                
+          except AttributeError :
+            app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
+            message.reply_text("Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117")                
 
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
