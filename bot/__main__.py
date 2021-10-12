@@ -26,7 +26,8 @@ def validator(client, message) :
               print(message)
               print(str(remove_strings))
               if int(message.forward_from.id) in vList :
-                message.reply_text("""Sukses Validasi. Validation Success.
+                message.reply_text("""
+                Sukses Validasi. Validation Success.
                 Menfess anda BERHASIL terkirim. 
                 Terimakasih.
                 #LawanCOVID19
@@ -65,12 +66,14 @@ def validator(client, message) :
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
                 ref: MENFESS_UUID_INVALID""")
-                message.reply_text("""Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
+                message.reply_text("""
+                Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
                 ref: MENFESS_UUID_INVALID""")
           except AttributeError :
             app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
-            message.reply_text("""Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
+            message.reply_text("""
+            Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
             
             ref: SENDER_PRIVACY_ISSUE""") 
 
