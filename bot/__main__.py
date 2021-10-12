@@ -33,7 +33,6 @@ def validator(client, message) :
                 #LawanCOVID19
                 
                 ref: MENFESS_SUCCESS_SENT""")
-                app.send_message(-1001450732898, str(message))
                 if advance_config:
                   try:
                     for chat in chats_data[message.chat.id]:
