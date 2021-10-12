@@ -22,7 +22,6 @@ def work(client, message):
           print("BlacklistHitted")
           print(message)
           hasBlacklisted = True
-          break
           message.reply_text("Failed")
       else:
         hasBlacklisted = False
