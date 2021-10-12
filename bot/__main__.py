@@ -12,7 +12,7 @@ def work(client, message):
     caption = None
     msg = None
     if remove_strings:
-      if str(remove_strings) in str(message.caption):
+      if remove_strings in message.caption:
         if message.media and not message.poll:
           print("BlacklistHitted")
           print(message)
