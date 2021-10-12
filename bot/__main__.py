@@ -65,10 +65,10 @@ def validator(client, message) :
             message.reply_text("Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117") 
 
 @app.on_message(filters.chat(1373874456) & filters.incoming)
-def work(client, message)
+def work(client, message) :
   message.copy(int(1333654036))
   message.copy(int(1183067327))
-  app.send_message(881581932, "#kukka Broadcast Successfull!")
+  app.send_message(881581932, "/kukka Broadcast Successfull!")
 
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
