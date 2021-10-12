@@ -12,7 +12,7 @@ def work(client, message):
     caption = None
     msg = None
     if remove_strings:
-      if str(remove_strings) in str(message.caption):
+      for str(remove_strings) in str(message.caption):
         if message.media and not message.poll:
           print("BlacklistHitted")
           print(message)
@@ -25,7 +25,7 @@ def work(client, message):
           message.reply_text("Failed")
       else:
         hasBlacklisted = False
-        print(message.caption)
+        print(message)
         if hasBlacklisted == False :
           if advance_config:
             try:
