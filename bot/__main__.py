@@ -1,10 +1,14 @@
 import os
+import verified
 import random
 from time import sleep
+from validate import vUser
 from pyrogram import filters
 from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
+def false():
+  app.send_message(881581932, "Currently there is prohibited user try to send message!")
 
 @app.on_message(filters.chat(from_chats) & (filters.incoming & filters.regex("#BS") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
@@ -14,14 +18,8 @@ def work(client, message):
     if remove_strings:
       if remove_strings in message.caption:
         if message.media and not message.poll:
-          print("BlacklistHitted")
-          print(message)
-          hasBlacklisted = True
           message.reply_text("Failed")
         elif message.text:
-          print("BlacklistHitted")
-          print(message)
-          hasBlacklisted = True
           message.reply_text("Failed")
       else:
         hasBlacklisted = False
@@ -53,6 +51,14 @@ def work(client, message):
           else : 
             print("Has Hitted")
 
+def validator(client, message):
+  if message.forward_from.id in vUser:
+    message.reply_text("Menfess Succesfully sent!")
+    work
+  else:
+    message.reply_text("FAILED!")
+    false
+
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
 def forward(app, message):
     if len(message.command) > 1:
@@ -80,4 +86,3 @@ def forward(app, message):
       reply.delete()
 
 app.run()
-
