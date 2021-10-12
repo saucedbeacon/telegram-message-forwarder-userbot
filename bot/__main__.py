@@ -25,7 +25,8 @@ def validator(client, message) :
         print(message)
         print(message.forward_from.id)
         print(str(remove_strings))
-        if hasBlacklisted == False :
+        if int(message.forward_from.id) in vList :
+          message.reply_text("SUCCESS")
           if advance_config:
             try:
               for chat in chats_data[message.chat.id]:
@@ -78,3 +79,4 @@ def forward(app, message):
       reply.delete()
 
 app.run()
+
