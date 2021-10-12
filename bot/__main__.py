@@ -39,6 +39,7 @@ def validator(client, message) :
                         message.copy(chat)
                   except Exception as e:
                     LOG.error(e)
+                  break
                   else:
                     try:
                       for chat in to_chats:
