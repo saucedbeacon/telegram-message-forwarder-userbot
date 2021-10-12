@@ -57,7 +57,7 @@ def work(client, message):
     work
   else:
     message.reply_text("FAILED!")
-        print("NWorking")
+    print("NWorking")
     false
 
 @app.on_message(filters.user(sudo_users) & filters.command(["fwd", "forward"]), group=1)
