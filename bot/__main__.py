@@ -78,9 +78,9 @@ TIME : """ + str(datetime.now()))
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
-                ref: MENFESS_UUID_INVALID.
-                
-                UUID : """ + str(message.forward_from.id))
+ref: MENFESS_UUID_INVALID.                
+UUID : """ + str(message.forward_from.id) + """
+TIME : """ + str(datetime.now()))
           except AttributeError :
             app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
             message.reply_text("""
@@ -159,9 +159,9 @@ TIME : """ + str(datetime.now()))
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
-                ref: MENFESS_UUID_INVALID
-                
-                UUID : """ + str(message.forward_from.id))
+ref: MENFESS_UUID_INVALID
+UUID : """ + str(message.forward_from.id) + """
+TIME : """ + str(datetime.now())
           except AttributeError :
             app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
             message.reply_text("""
