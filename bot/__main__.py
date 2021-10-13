@@ -151,7 +151,7 @@ def validator(client, message) :
             
             ref: SENDER_PRIVACY_ISSUE""") 
         else :
-          message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.")
+         message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.")
 
 @app.on_message(filters.chat(-1001373874456) & filters.incoming)
 def work(client, message) :
