@@ -37,9 +37,11 @@ Terimakasih.
                 
 ref: MENFESS_SUCCESS_SENT
 Sender Name : """ + str(message.forward_from.first_name) +
-"""Sender UUID : """ + str(message.forward_from.id) +
-"""Menfess ID : """  + str(message.message_id)  + """
-                """ + str(datetime.now()))
+"""
+Sender UUID : """ + str(message.forward_from.id) +
+"""
+Menfess ID : """  + str(message.message_id)  + """
+TIME : """ + str(datetime.now()))
                 if advance_config:
                   try:
                     for chat in chats_data[message.chat.id]:
@@ -116,9 +118,11 @@ Terimakasih.
                 
 ref: MENFESS_SUCCESS_SENT 
 Sender Name : """ + str(message.forward_from.first_name) +
-"""Sender UUID : """ + str(message.forward_from.id) +
-"""Menfess ID : """  + str(message.message_id) + """
-                """ + str(datetime.now()))
+"""
+Sender UUID : """ + str(message.forward_from.id) +
+"""
+Menfess ID : """  + str(message.message_id) + """
+TIME : """ + str(datetime.now()))
                 if advance_config:
                   try:
                     for chat in chats_data[message.chat.id]:
