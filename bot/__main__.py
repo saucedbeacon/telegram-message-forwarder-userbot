@@ -1,5 +1,7 @@
 import os
 import random
+import datetime
+from datetime import datetime
 from time import sleep
 from pyrogram import filters
 from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
@@ -32,7 +34,11 @@ def validator(client, message) :
                 Terimakasih.
                 #LawanCOVID19
                 
-                ref: MENFESS_SUCCESS_SENT""")
+                ref: MENFESS_SUCCESS_SENT
+                Sender Name : """ + str(message.forward_from.first_name) +
+                """Sender UUID : """ + str(message.forward_from.id) +
+                """Menfess ID : """  + str(message.message_id)  + """
+                """ + str(datetime.now()))
                 if advance_config:
                   try:
                     for chat in chats_data[message.chat.id]:
@@ -69,7 +75,9 @@ def validator(client, message) :
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
-                ref: MENFESS_UUID_INVALID""" + str(message.forward_from.id))
+                ref: MENFESS_UUID_INVALID.
+                
+                UUID : """ + str(message.forward_from.id))
           except AttributeError :
             app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
             message.reply_text("""
@@ -77,9 +85,9 @@ def validator(client, message) :
             
             ref: SENDER_PRIVACY_ISSUE""") 
         elif int(len(message.text)) < int(34) :
-            message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.")
-            app.send_message(881581932, "ERROR_MINIMUM_CHAR")
-
+            message.reply_text("""Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.
+            ref: ERROR_MINIMUM_CHAR""")
+            
 @app.on_message(filters.chat(-1001573969940) & filters.caption & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
 def validator(client, message) :
@@ -105,7 +113,11 @@ def validator(client, message) :
                 Terimakasih.
                 #LawanCOVID19
                 
-                ref: MENFESS_SUCCESS_SENT""")
+                ref: MENFESS_SUCCESS_SENT 
+                Sender Name : """ + str(message.forward_from.first_name) +
+                """Sender UUID : """ + str(message.forward_from.id) + 
+                """Menfess ID : """  + str(message.message_id) + """
+                """ + str(datetime.now()))
                 if advance_config:
                   try:
                     for chat in chats_data[message.chat.id]:
