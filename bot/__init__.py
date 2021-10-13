@@ -1,7 +1,7 @@
 import os
 import sys
 import logging
-from bot import validate.py
+from bot import validate
 from os import environ
 from dotenv import load_dotenv
 from pyrogram import Client
