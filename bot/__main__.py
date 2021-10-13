@@ -28,7 +28,7 @@ def validator(client, message) :
               print(message)
               print(str(remove_strings))
               if int(message.forward_from.id) in vList :
-                message.reply_text("""
+                message.reply_text(""".
                 Sukses Validasi. Validation Success.
                 Menfess anda BERHASIL terkirim. 
                 Terimakasih.
@@ -36,8 +36,10 @@ def validator(client, message) :
                 
                 ref: MENFESS_SUCCESS_SENT
                 Sender Name : """ + str(message.forward_from.first_name) +
-                """Sender UUID : """ + str(message.forward_from.id) +
-                """Menfess ID : """  + str(message.message_id)  + """
+                """
+                Sender UUID : """ + str(message.forward_from.id) + 
+                """
+                Menfess ID : """  + str(message.message_id)  + """
                 """ + str(datetime.now()))
                 if advance_config:
                   try:
@@ -115,8 +117,10 @@ def validator(client, message) :
                 
                 ref: MENFESS_SUCCESS_SENT 
                 Sender Name : """ + str(message.forward_from.first_name) +
-                """Sender UUID : """ + str(message.forward_from.id) + 
-                """Menfess ID : """  + str(message.message_id) + """
+                """
+                Sender UUID : """ + str(message.forward_from.id) + 
+                """
+                Menfess ID : """  + str(message.message_id) + """
                 """ + str(datetime.now()))
                 if advance_config:
                   try:
