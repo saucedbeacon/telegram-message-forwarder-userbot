@@ -1,7 +1,7 @@
 import os
 import random
-import validate.py
-from validate.py import vList
+import validate
+from validate import vList
 from time import sleep
 from pyrogram import filters
 from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
