@@ -76,8 +76,9 @@ def validator(client, message) :
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
             
             ref: SENDER_PRIVACY_ISSUE""") 
-          else :
+        elif int(len(message.text)) < int(34) :
             message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.")
+            app.send_message(881581932, "ERROR_MINIMUM_CHAR")
 
 @app.on_message(filters.chat(-1001573969940) & filters.caption & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
@@ -150,8 +151,8 @@ def validator(client, message) :
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
             
             ref: SENDER_PRIVACY_ISSUE""") 
-        else :
-         message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.")
+        elif int(len(message.caption)) < int(34) :
+         message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35")
 
 @app.on_message(filters.chat(-1001373874456) & filters.incoming)
 def work(client, message) :
