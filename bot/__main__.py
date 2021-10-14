@@ -107,7 +107,7 @@ def validator(client, message) :
         if len(message.caption) > int(34) :
           try:
             hasBlacklisted = False
-            if int(len(message.photo.thumbs)) > 2 :
+            if int(len(message.photo.thumbs)) > 0 :
               print(message)
               print(str(remove_strings))
               if int(message.forward_from.id) in vList :
