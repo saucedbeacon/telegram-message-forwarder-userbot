@@ -74,11 +74,11 @@ TIME : """ + str(datetime.now()))
               else: 
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
-                ref: MENFESS_UUID_INVALID""")
+                ref: SENDER_UUID_INVALID""")
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
-ref: MENFESS_UUID_INVALID.                
+ref: SENDER_UUID_INVALID.                
 UUID : """ + str(message.forward_from.id) + """
 TIME : """ + str(datetime.now()))
           except AttributeError :
@@ -89,7 +89,8 @@ TIME : """ + str(datetime.now()))
             ref: SENDER_PRIVACY_ISSUE""") 
         elif int(len(message.text)) < int(34) :
             message.reply_text("""Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.
-            ref: ERROR_MINIMUM_CHAR""")
+            ref: ERROR_MINIMUM_CHAR
+            TIME : """ + str(datetime.now))
             
 @app.on_message(filters.chat(-1001573969940) & filters.photo & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
@@ -155,11 +156,11 @@ TIME : """ + str(datetime.now()))
               else: 
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
-                ref: MENFESS_UUID_INVALID""")
+                ref: SENDER_UUID_INVALID""")
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
-ref: MENFESS_UUID_INVALID
+ref: SENDER_UUID_INVALID
 UUID : """ + str(message.forward_from.id) + """
 TIME : """ + str(datetime.now()))
             else :
@@ -169,9 +170,12 @@ TIME : """ + str(datetime.now()))
             message.reply_text("""
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
             
-            ref: SENDER_PRIVACY_ISSUE""") 
+            ref: SENDER_PRIVACY_ISSUE
+            TIME : """ + str(datetime.now())) 
         elif int(len(message.caption)) < int(34) :
-         message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35")
+         message.reply_text("""Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.
+            ref: ERROR_MINIMUM_CHAR
+            TIME : """ + str(datetime.now))
 
 @app.on_message(filters.chat(-1001573969940) & filters.video & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
@@ -237,11 +241,11 @@ TIME : """ + str(datetime.now()))
               else: 
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
-                ref: MENFESS_UUID_INVALID""")
+                ref: SENDER_UUID_INVALID""")
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
-ref: MENFESS_UUID_INVALID
+ref: SENDER_UUID_INVALID
 UUID : """ + str(message.forward_from.id) + """
 TIME : """ + str(datetime.now()))
             else :
@@ -250,15 +254,26 @@ TIME : """ + str(datetime.now()))
             app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
             message.reply_text("""
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
-            
             ref: SENDER_PRIVACY_ISSUE""") 
         elif int(len(message.caption)) < int(34) :
-         message.reply_text("Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35")
+         message.reply_text("""
+         Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35
+         ref: MENFESS_ERR_UNSUFFICENTCHAR
+         TIME : """ + str(datetime.now()))
 
 @app.on_message(filters.chat(-1001373874456) & filters.incoming)
 def work(client, message) :
   message.copy(int(-1001333654036))
   message.copy(int(-1001183067327))
   app.send_message(881581932, "#kukka Broadcast Successfull!")
+
+@app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
+def work(client, message) :
+  message.reply_text("""
+  Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
+  ref: MENFESS_ERR_NOTRIGGER
+  TIME : """ + str(datetime.now()))
+
+
 
 app.run()
