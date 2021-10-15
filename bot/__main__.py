@@ -13,8 +13,10 @@ from bot.helper.utils import get_formatted_chat
 import requests
 import json
 url = "https://apinero.uvcr.me/master/v1/merchant/148"
-@app
+@app.on_message(filters.incoming)
+
 def check(Client, message) :
+  
   import requests
   response = requests.get(url)
   print("++++++++++++++++++_________")
@@ -28,13 +30,11 @@ def check(Client, message) :
   if int(j) > 0 :
     app.send_message(-1001280550155, "RESTOCK WOY")
     sleep(30)
-    check(Client, message)
   else :
     app.send_message(-1001280550155, "LAGI GAK ADA STOK")
     sleep(30)
-    check(Client, message)
-    
 
 app.run()
+    
 
 
