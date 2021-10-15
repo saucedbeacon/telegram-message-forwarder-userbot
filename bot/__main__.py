@@ -17,6 +17,7 @@ url = "https://apinero.uvcr.me/master/v1/merchant/148"
 def check(Client) :
   import requests
   response = requests.get(url)
+  print("++++++++++++++++++_________")
   d = response.json()
   f = d['data']
   g = f['product_vouchers']
