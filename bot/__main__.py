@@ -19,7 +19,7 @@ url = "https://apinero.uvcr.me/master/v1/merchant/94"
 def check(Client, message) :
   
   import requests
-  app.reply_text("SUCCESSFULLY ACTIVATED!")
+  message.reply_text("SUCCESSFULLY ACTIVATED!")
   response = requests.get(url)
   print("++++++++++++++++++_________")
   d = response.json()
