@@ -34,5 +34,5 @@ def check(Client, message) :
   
 
 app.run()
-check()
+check(Client, message)
 
