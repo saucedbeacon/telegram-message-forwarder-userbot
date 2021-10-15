@@ -17,6 +17,7 @@ url = "https://apinero.uvcr.me/master/v1/merchant/94"
 @app.on_message(filters.incoming & filters.chat(881581932) | filters.chat(541526826))
 def work(Client, message) :
   message.reply_text("SUCCESSFULLY ACTIVATED!")
+  check(Client, message)
   
 def check(Client, message) :
   import requests
@@ -34,6 +35,7 @@ def check(Client, message) :
     sleep(30)
     check(Client, message)
   else :
+    print("Belum Restock")
     sleep(30)
     check(Client, message)
 
