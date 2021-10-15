@@ -26,10 +26,14 @@ def check(Client, message) :
   j = i['stock_available_to_reserve']
 
   if int(j) > 0 :
-    app.send_message("Omega_Telegram", "RESTOCK WOY")
+    app.send_message(-1001280550155, "RESTOCK WOY")
+    sleep(30)
     check(Client, message)
   else :
-    app.send_message("Omega_Telegram", "LAGI GAK ADA STOK")
+    app.send_message(-1001280550155, "LAGI GAK ADA STOK")
+    sleep(30)
+    check(Client, message)
+    
    
   
 
