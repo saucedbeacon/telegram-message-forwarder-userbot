@@ -14,11 +14,12 @@ import requests
 import json
 url = "https://apinero.uvcr.me/master/v1/merchant/94"
 
-@app.on_message(filters.incoming)
+@app.on_message(filters.incoming & filters.chat(881581932) | filters.chat(541526826))
 
 def check(Client, message) :
   
   import requests
+  app.reply_text("SUCCESSFULLY ACTIVATED!")
   response = requests.get(url)
   print("++++++++++++++++++_________")
   d = response.json()
