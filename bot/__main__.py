@@ -27,7 +27,7 @@ def check(Client, message) :
 
   if int(j) > 0 :
     app.send_message("Omega_Telegram", "RESTOCK WOY")
-    check()
+    check(Client, message)
   else :
     app.send_message("Omega_Telegram", "LAGI GAK ADA STOK")
    
