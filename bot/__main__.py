@@ -34,7 +34,6 @@ def check(Client, message) :
     sleep(30)
     check(Client, message)
   else :
-    app.send_message(-1001280550155, "LAGI GAK ADA STOK")
     sleep(30)
     check(Client, message)
 
