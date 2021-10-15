@@ -15,6 +15,7 @@ import json
 url = "https://apinero.uvcr.me/master/v1/merchant/148"
 @app
 def check(Client) :
+  import requests
   response = requests.get(url)
   d = response.json()
   f = d['data']
