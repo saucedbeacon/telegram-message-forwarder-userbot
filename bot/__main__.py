@@ -13,7 +13,7 @@ from bot.helper.utils import get_formatted_chat
 import requests
 import json
 url = "https://apinero.uvcr.me/master/v1/merchant/148"
-@app.on_message(filters.incoming)
+@app
 def check(Client, message) :
   import requests
   response = requests.get(url)
