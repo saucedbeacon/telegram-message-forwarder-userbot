@@ -29,9 +29,8 @@ def check(Client, message) :
   j = i['stock_available_to_reserve']
 
   if int(j) > 0 :
-    app.send_message(-1001280550155, "RESTOCK WOY")
+    app.send_message(-1001280550155, "@Lumbanr @igayuu @FaizIkhsan RESTOCK WOY _ GC SIMAS 1JT")
     sleep(30)
-    break
   else :
     app.send_message(-1001280550155, "LAGI GAK ADA STOK")
     sleep(30)
