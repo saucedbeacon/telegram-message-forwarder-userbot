@@ -33,7 +33,7 @@ def validator(client, message) :
                 Sukses Validasi. Validation Success.
 Menfess anda BERHASIL terkirim. 
 Terimakasih.
-#LawanCOVID19
+#DISCOUNTFESS
                 
 ref: MENFESS_SUCCESS_SENT
 Sender Name : """ + str(message.forward_from.first_name) +
@@ -275,5 +275,89 @@ def work(client, message) :
   TIME : """ + str(datetime.now()))
 
 
+@app.on_message(filters.chat(-1001740864299) & (filters.incoming & filters.regex("!kyubi")))
+  
+def validator(client, message) :
+    caption = None
+    msg = None
+    if remove_strings:
+      if str(remove_strings) in str(message.caption):
+        if message.media and not message.poll:
+          message.reply_text("Failed")
+        elif message.text:
+          message.reply_text("Failed")
+      else:
+        if int(3) == int(3):
+          try:
+            hasBlacklisted = False
+            if hasBlacklisted == False :
+              print(message)
+              print(str(remove_strings))
+              if int(message.forward_from.id) in vList :
+                message.reply_text("""
+                Sukses Validasi. Validation Success.
+Menfess anda BERHASIL terkirim. 
+Terimakasih.
+#Beyoutey
+                
+ref: MENFESS_SUCCESS_SENT
+Sender Name : """ + str(message.forward_from.first_name) +
+"""
+Sender UUID : """ + str(message.forward_from.id) +
+"""
+Menfess ID : """  + str(message.message_id)  + """
+TIME : """ + str(datetime.now()))
+                if advance_config:
+                  try:
+                    for chat in chats_data[message.chat.id]:
+                      if caption:
+                        message.copy(-1001669454516, caption=caption)
+                      elif msg:
+                        app.send_message(-1001669454516, msg, parse_mode="html")
+                      else:
+                        message.copy(-1001669454516)
+                  except Exception as e:
+                    LOG.error(e)
+                  else:
+                    try:
+                      for chat in to_chats:
+                        if caption:
+                          message.copy(-1001669454516, caption=caption)
+                        elif msg:
+                          app.send_message(-1001669454516, msg)
+                      else:
+                        message.copy(-1001669454516)
+                    except Exception as e:
+                      LOG.error(e)
+                elif str(message.chat.id) == str(-1001373874456) : 
+                  print("Has Hitted")
+                  message.reply_text("FAILED > GAGAL")
+              elif str(message.chat.id) == str(-1001373874456) :
+                message.copy(int(1333654036))
+                message.copy(int(1183067327))
+                app.send_message(881581932, "#kukka Broadcast Successfull!")
+              else: 
+                app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
+                app.send_message(881581932, "#FAILB ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
+                ref: SENDER_UUID_INVALID""")
+                message.reply_text("""
+                Verifikasi GAGAL. Sistem kami sedang melakukan optimalisasi. Mohon tungggu atau hubungi @BeyouteySupportbot.
+                
+ref: SENDER_UUID_INVALID.                
+UUID : """ + str(message.forward_from.id) + """
+TIME : """ + str(datetime.now()))
+          except AttributeError :
+            app.send_message(881581932, "SENDER_PRIVACY_ISSUE #SBY > " + str(message.forward_sender_name))
+            message.reply_text("""
+            Sistem GAGAL memverifikasi. 
+            Pastikan telah mengubah Forwarding Options menjadi
+            Everyone!
+            
+            ref: SENDER_PRIVACY_ISSUE
+            TIME : """ + str(datetime.now())) 
+        elif int(len(message.text)) < int(34) :
+            message.reply_text("""Jumlah karakter minimum tidak terpenuhi. Jumlah minimum adalah 35 karakter.
+            ref: ERROR_MINIMUM_CHAR
+            TIME : """ + str(datetime.now()))
 
 app.run()
