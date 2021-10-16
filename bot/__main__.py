@@ -10,6 +10,15 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
 
+@app.on_message(filters.chat(881581932) & filters.regex("broadcast!"))
+def run(Client, message):
+  vNew = [881581932, 2048146654]
+  for i in range(0, 1):
+    app.send_message("YEY! Sekarang kamu sudah bisa kirim menfess loh.")
+    continue
+
+
+
 @app.on_message(filters.chat(-1001573969940) & filters.text & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
   
 def validator(client, message) :
