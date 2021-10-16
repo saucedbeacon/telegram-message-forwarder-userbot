@@ -309,7 +309,8 @@ Menfess ID : """  + str(message.message_id)  + """
 TIME : """ + str(datetime.now()))
                 if advance_config:
                   try:
-                    for chat in chats_data[message.chat.id]:
+                    chat = int(-1001740864299)
+                    if chat == int(-1001740864299):
                       if caption:
                         message.copy(-1001669454516, caption=caption)
                       elif msg:
@@ -320,7 +321,8 @@ TIME : """ + str(datetime.now()))
                     LOG.error(e)
                   else:
                     try:
-                      for chat in to_chats:
+                      chat = int(-1001740864299)
+                      if chat == int(-1001740864299):
                         if caption:
                           message.copy(-1001669454516, caption=caption)
                         elif msg:
