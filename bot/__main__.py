@@ -14,7 +14,7 @@ from bot.helper.utils import get_formatted_chat
 def run(Client, message):
   vNew = [881581932, 2048146654]
   for i in range(0, 1):
-    app.send_message("YEY! Sekarang kamu sudah bisa kirim menfess loh.")
+    app.send_message(i, "YEY! Sekarang kamu sudah bisa kirim menfess loh.")
     continue
 
 
