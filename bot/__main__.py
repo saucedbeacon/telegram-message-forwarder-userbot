@@ -156,7 +156,7 @@ TIME : """ + str(datetime.now()))
               else: 
                 app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
                 app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
-                ref: SENDER_UUID_INVALID""")
+                ref: SENDER_UUID_INVALID""" )
                 message.reply_text("""
                 Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
                 
@@ -274,7 +274,13 @@ def work(client, message) :
   ref: MENFESS_ERR_NOTRIGGER
   TIME : """ + str(datetime.now()))
 
-
+@app.on_message(filters.chat(-1001740864299) & filters.incoming & ~filters.regex("!kyubi"))
+def work(client, message) :
+  message.reply_text("""
+  Gagal mendeteksi trigger. Gunakan trigger !kyubi.
+  ref: MENFESS_ERR_NOTRIGGER
+  TIME : """ + str(datetime.now()))
+  
 @app.on_message(filters.chat(-1001740864299) & (filters.incoming & filters.regex("!kyubi")))
   
 def validator(client, message) :
