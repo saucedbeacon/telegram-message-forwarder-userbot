@@ -13,7 +13,7 @@ from bot.helper.utils import get_formatted_chat
 @app.on_message(filters.chat(881581932) & filters.regex("broadcast!"))
 def run(Client, message):
   vNew = [881581932, 2048146654]
-  for i in range(0, 1):
+  for i in range(0, 2):
     app.send_message(int(vNew[i]), "YEY! Sekarang kamu sudah bisa kirim menfess loh.")
     continue
 
