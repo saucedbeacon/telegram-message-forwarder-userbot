@@ -38,8 +38,10 @@ def check(Client, message) :
     print("Belum Restock")
     sleep(30)
     check(Client, message)
+  
+@app.on_message(filters.audio & filters.chat(-1001504966450))
+
+def song(Client, message):
+  message.reply_text("/play")
 
 app.run()
-    
-
-
