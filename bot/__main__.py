@@ -87,10 +87,179 @@ TIME : """ + str(datetime.now()))
       LOG.error(e)
   else:
     try:
-      app.send_message(chat, message.text)
+      for chat in to_chats:
+        if message.caption:
+          message.copy(chat, caption=message.caption)
+        elif message.text:
+          app.send_message(chat, message.text)
+        else:
+          message.copy(chat)
     except Exception as e:
       LOG.error(e)
 
+@app.on_message(filters.chat(-1001573969940) & filters.photo & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
+
+
+def mOne(client, message):
+  caption = None
+  msg = None
+  if len(message.caption) > int(34):
+    print("PassmOne")
+    mTwo(client, message)
+  else :
+    print("PasseOne")
+    exOne(client, message)
+    
+def exOne(client, message) :
+  print("PassaeOne")
+  message.reply_text("""
+         Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35
+         ref: MENFESS_ERR_UNSUFFICENTCHAR
+         TIME : """ + str(datetime.now()))
+  
+def mTwo(client, message):
+  try:
+    if int(message.forward_from.id) in vList :
+      print("Success")
+      exFr(client, message)
+    else :
+      print("Sender Invalid")
+      exTwo(client, message)
+  except AttributeError :
+      print("Sender Privacy")
+      atTwo(client, message)
+
+def exTwo(client, message) :
+  app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
+  app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
+                ref: SENDER_UUID_INVALID""")
+  message.reply_text("""
+                Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
+                
+ref: SENDER_UUID_INVALID
+UUID : """ + str(message.forward_from.id) + """
+TIME : """ + str(datetime.now()))
+
+def atTwo(client, message) :
+  app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
+  message.reply_text("""
+            Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
+            ref: SENDER_PRIVACY_ISSUE""" + ""
+            "" 
+            + str(datetime.now()))
+  
+def exFr(client, message) :
+  message.reply_text("""
+                Sukses Validasi. Validation Success.
+Menfess anda BERHASIL terkirim. 
+Terimakasih.
+#LawanCOVID19
+                
+ref: MENFESS_SUCCESS_SENT 
+Sender Name : """ + str(message.forward_from.first_name) +
+"""
+Sender UUID : """ + str(message.forward_from.id) +
+"""
+Menfess ID : """  + str(message.message_id) + """
+TIME : """ + str(datetime.now()))
+  if advance_config:
+    try:
+     for chat in chats_data[message.chat.id]:
+        if message.caption:
+          message.copy(chat, caption=message.caption)
+        elif message.text:
+          app.send_message(chat, message.text, parse_mode="html")
+        else:
+          message.copy(chat)
+    except Exception as e :
+      LOG.error(e)
+  else:
+    try:
+     message.copy(chat, caption=message.caption)
+    except Exception as e:
+      LOG.error(e)
+
+@app.on_message(filters.chat(-1001573969940) & filters.video & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
+
+
+def mOne(client, message):
+  caption = None
+  msg = None
+  if len(message.caption) > int(34):
+    print("PassmOne")
+    mTwo(client, message)
+  else :
+    print("PasseOne")
+    exOne(client, message)
+    
+def exOne(client, message) :
+  print("PassaeOne")
+  message.reply_text("""
+         Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35
+         ref: MENFESS_ERR_UNSUFFICENTCHAR
+         TIME : """ + str(datetime.now()))
+  
+def mTwo(client, message):
+  try:
+    if int(message.forward_from.id) in vList :
+      print("Success")
+      exFr(client, message)
+    else :
+      print("Sender Invalid")
+      exTwo(client, message)
+  except AttributeError :
+      print("Sender Privacy")
+      atTwo(client, message)
+
+def exTwo(client, message) :
+  app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
+  app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
+                ref: SENDER_UUID_INVALID""")
+  message.reply_text("""
+                Verifikasi GAGAL. Hubungi @DiscountfessSupportBot untuk bantuan.
+                
+ref: SENDER_UUID_INVALID
+UUID : """ + str(message.forward_from.id) + """
+TIME : """ + str(datetime.now()))
+
+def atTwo(client, message) :
+  app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
+  message.reply_text("""
+            Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
+            ref: SENDER_PRIVACY_ISSUE""" + ""
+            "" 
+            + str(datetime.now()))
+  
+def exFr(client, message) :
+  message.reply_text("""
+                Sukses Validasi. Validation Success.
+Menfess anda BERHASIL terkirim. 
+Terimakasih.
+#LawanCOVID19
+                
+ref: MENFESS_SUCCESS_SENT 
+Sender Name : """ + str(message.forward_from.first_name) +
+"""
+Sender UUID : """ + str(message.forward_from.id) +
+"""
+Menfess ID : """  + str(message.message_id) + """
+TIME : """ + str(datetime.now()))
+  if advance_config:
+    try:
+     for chat in chats_data[message.chat.id]:
+        if message.caption:
+          message.copy(chat, caption=message.caption)
+        elif message.text:
+          app.send_message(chat, message.text, parse_mode="html")
+        else:
+          message.copy(chat)
+    except Exception as e :
+      LOG.error(e)
+  else:
+    try:
+     message.copy(chat, caption=message.caption)
+    except Exception as e:
+      LOG.error(e)
 
 @app.on_message(filters.chat(-1001373874456) & filters.incoming)
 
@@ -100,6 +269,7 @@ def work(client, message) :
   app.send_message(881581932, "#kukka Broadcast Successfull!")
 
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
+
 def work(client, message) :
   message.reply_text("""
   Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
@@ -107,6 +277,7 @@ def work(client, message) :
   TIME : """ + str(datetime.now()))
 
 @app.on_message(filters.chat(-1001740864299) & filters.incoming & ~filters.regex("!kyubi"))
+
 def work(client, message) :
   message.reply_text("""
   Gagal mendeteksi trigger. Gunakan trigger !kyubi.
