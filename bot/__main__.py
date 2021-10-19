@@ -13,6 +13,21 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
 from bot.helper.utils import get_formatted_chat
 
 
+import os
+import random
+import datetime
+import validate
+from validate import vList
+import waiting
+from waiting import waitingUsr
+from datetime import datetime
+from time import sleep
+from pyrogram import filters
+from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
+                remove_strings, replace_string, sudo_users
+from bot.helper.utils import get_formatted_chat
+
+
 @app.on_message(filters.chat(-1001573969940) & filters.text & (filters.incoming & filters.regex("#delete")))
  
 def exOne(client, message) :
@@ -28,7 +43,11 @@ def exOne(client, message) :
   fr = message.forward_from.id
   if frfr == fr :
     app.search_messages(-1001183067327, query=str(message.text), limit=1)
-    message.delete(chat_id=-1001183067327, message_ids=message.message_id)
+    print(message)
+    app.delete_message(-1001183067327, message.message_id)
+
+
+app.run()
 
 
 
