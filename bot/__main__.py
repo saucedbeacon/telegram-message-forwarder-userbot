@@ -27,7 +27,8 @@ def exOne(client, message) :
   fr = message.forward_from.id
   if frfr == fr :
     app.search_messages(-1001183067327, query=str(message.text), limit=1)
-    message.delete(-1001183067327, int(fr))
+    print(message)
+    message.delete(-1001183067327, message.message_id)
   else :
     message.reply_text("Fail.")
   message.reply_text("Success.")
