@@ -44,7 +44,7 @@ def exOne(client, message) :
   if frfr == fr :
     app.search_messages(-1001183067327, query=str(message.text), limit=1)
     print(message)
-    app.delete_message(-1001183067327, message.message_id)
+    app.delete_messages(-1001183067327, message.message_id)
 
 
 app.run()
