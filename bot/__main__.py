@@ -39,15 +39,15 @@ def exOne(client, message) :
           s.append(float(t))
       except ValueError:
           pass
+  exTwo(client, s, frfr)
+
+def exTwo(client, s, frfr):
   app.get_messages(-1001573969940, int(s[0]))
+  print(message)
   fr = message.forward_from.id
   if frfr == fr :
     app.search_messages(-1001183067327, query=str(message.text), limit=1)
-    print(message)
-    app.delete_messages(-1001183067327, message.message_id)
-
-
-app.run()
+    app.delete_message(-1001183067327, message.message_id)
 
 
 
