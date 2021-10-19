@@ -3,6 +3,8 @@ import random
 import datetime
 import validate
 from validate import vList
+import waiting
+from waiting import waitingUsr
 from datetime import datetime
 from time import sleep
 from pyrogram import filters
@@ -34,8 +36,8 @@ def exOne(client, message) :
 def mTwo(client, message):
   try:
     if int(message.forward_from.id) in vList :
-      print("Success")
-      exFr(client, message)
+      print("Pass mTwo")
+      mThree(client, message)
     else :
       print("Sender Invalid")
       exTwo(client, message)
@@ -87,15 +89,21 @@ TIME : """ + str(datetime.now()))
       LOG.error(e)
   else:
     try:
-      for chat in to_chats:
-        if message.caption:
-          message.copy(chat, caption=message.caption)
-        elif message.text:
-          app.send_message(chat, message.text)
-        else:
-          message.copy(chat)
+      app.send_message(chat, message.text)
     except Exception as e:
       LOG.error(e)
+  exThree(client, message)
+
+def exThree(client, message):
+  waitingUsr.append(message.forward_from.id)
+  sleep(360)
+  waitingUsr.remove(message.forward_from.id)
+
+def mThree(client, message):
+  if int(message.forward_from.id) in waitingUsr :
+    app.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
+  else :
+    exFr(client, message)
 
 @app.on_message(filters.chat(-1001573969940) & filters.photo & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
@@ -120,8 +128,8 @@ def exOne(client, message) :
 def mTwo(client, message):
   try:
     if int(message.forward_from.id) in vList :
-      print("Success")
-      exFr(client, message)
+      print("Pass mTwo")
+      mThree(client, message)
     else :
       print("Sender Invalid")
       exTwo(client, message)
@@ -144,9 +152,7 @@ def atTwo(client, message) :
   app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
   message.reply_text("""
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
-            ref: SENDER_PRIVACY_ISSUE""" + ""
-            "" 
-            + str(datetime.now()))
+            ref: SENDER_PRIVACY_ISSUE""") 
   
 def exFr(client, message) :
   message.reply_text("""
@@ -175,12 +181,23 @@ TIME : """ + str(datetime.now()))
       LOG.error(e)
   else:
     try:
-     message.copy(chat, caption=message.caption)
+      app.send_message(chat, message.caption)
     except Exception as e:
       LOG.error(e)
+  exThree(client, message)
+
+def exThree(client, message):
+  waitingUsr.append(message.forward_from.id)
+  sleep(360)
+  waitingUsr.remove(message.forward_from.id)
+
+def mThree(client, message):
+  if int(message.forward_from.id) in waitingUsr :
+    app.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
+  else :
+    exFr(client, message)
 
 @app.on_message(filters.chat(-1001573969940) & filters.video & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
-
 
 def mOne(client, message):
   caption = None
@@ -202,8 +219,8 @@ def exOne(client, message) :
 def mTwo(client, message):
   try:
     if int(message.forward_from.id) in vList :
-      print("Success")
-      exFr(client, message)
+      print("Pass mTwo")
+      mThree(client, message)
     else :
       print("Sender Invalid")
       exTwo(client, message)
@@ -226,9 +243,7 @@ def atTwo(client, message) :
   app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
   message.reply_text("""
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
-            ref: SENDER_PRIVACY_ISSUE""" + ""
-            "" 
-            + str(datetime.now()))
+            ref: SENDER_PRIVACY_ISSUE""") 
   
 def exFr(client, message) :
   message.reply_text("""
@@ -257,9 +272,21 @@ TIME : """ + str(datetime.now()))
       LOG.error(e)
   else:
     try:
-     message.copy(chat, caption=message.caption)
+      app.send_message(chat, message.caption)
     except Exception as e:
       LOG.error(e)
+  exThree(client, message)
+
+def exThree(client, message):
+  waitingUsr.append(message.forward_from.id)
+  sleep(360)
+  waitingUsr.remove(message.forward_from.id)
+
+def mThree(client, message):
+  if int(message.forward_from.id) in waitingUsr :
+    app.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
+  else :
+    exFr(client, message)
 
 @app.on_message(filters.chat(-1001373874456) & filters.incoming)
 
