@@ -96,12 +96,12 @@ TIME : """ + str(datetime.now()))
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
-  sleep(360)
+  sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
 def mThree(client, message):
   if int(message.forward_from.id) in waitingUsr :
-    app.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
+    message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
   else :
     exFr(client, message)
 
@@ -188,12 +188,12 @@ TIME : """ + str(datetime.now()))
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
-  sleep(360)
+  sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
 def mThree(client, message):
   if int(message.forward_from.id) in waitingUsr :
-    app.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
+    message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
   else :
     exFr(client, message)
 
@@ -279,12 +279,12 @@ TIME : """ + str(datetime.now()))
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
-  sleep(360)
+  sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
 def mThree(client, message):
   if int(message.forward_from.id) in waitingUsr :
-    app.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
+    message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
   else :
     exFr(client, message)
 
