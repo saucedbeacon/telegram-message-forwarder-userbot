@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 from bot import validate
+from bot import waiting
 from os import environ
 from dotenv import load_dotenv
 from pyrogram import Client
