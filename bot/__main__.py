@@ -12,6 +12,26 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
 
+@app.on_message(filters.chat(-1001573969940) & filters.text & (filters.incoming & filters.regex("#delete")))
+ 
+def exOne(client, message) :
+  frfr = message.forward_from.id
+  sentence = message.text
+  s = []
+  for t in sentence.split():
+      try:
+          s.append(float(t))
+      except ValueError:
+          pass
+  app.get_messages(-1001573969940, int(s[0]))
+  fr = message.forward_from.id
+  if frfr == fr :
+    app.search_messages(-1001183067327, query=str(message.text), limit=1)
+    message.delete(-1001183067327, int(fr))
+  else :
+    message.reply_text("Fail.")
+  message.reply_text("Success.")
+
 
 @app.on_message(filters.chat(-1001573969940) & filters.text & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
