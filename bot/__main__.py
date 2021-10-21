@@ -137,11 +137,17 @@ def exThree(client, message):
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
+def delay(client, message):
+  message.reply_text("Dikarenakan sedang dilakukan maintenance pada server menfess maka menfess kamu akan dikirim 5 menit setelah pesan ini.")
+  message.copy(-1001565220245)
+  sleep(300)
+  exFr(client, message)
+  
 def mThree(client, message):
   if int(message.forward_from.id) in waitingUsr :
     message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
   else :
-    exFr(client, message)
+    delay(client, message)
 
 @app.on_message(filters.chat(-1001573969940) & filters.photo & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
