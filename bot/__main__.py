@@ -134,6 +134,7 @@ TIME : """ + str(datetime.now()))
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
+  print(waitingUsr)
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
@@ -148,6 +149,7 @@ def mThree(client, message):
     message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
   else :
     delay(client, message)
+ # END BLOCK TEXT # END BLOCK TEXT 
 
 @app.on_message(filters.chat(-1001573969940) & filters.photo & (filters.incoming & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
@@ -232,6 +234,7 @@ TIME : """ + str(datetime.now()))
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
+  print(waitingUsr)
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
   
@@ -329,6 +332,7 @@ TIME : """ + str(datetime.now()))
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
+  print(waitingUsr)
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
