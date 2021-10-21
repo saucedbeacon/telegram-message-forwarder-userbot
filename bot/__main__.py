@@ -332,7 +332,7 @@ def exThree(client, message):
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
- def delay(client, message):
+def delay(client, message):
   message.reply_text("Dikarenakan sedang dilakukan maintenance pada server menfess maka menfess kamu akan dikirim 5 menit setelah pesan ini.")
   message.copy(-1001565220245, caption=message.caption)
   sleep(300)
