@@ -41,10 +41,10 @@ def check(Client, message) :
     check(Client, message)
  
 
-@app.on_message(filters.chat(881581932) | filters.chat(me) | filters.chat(-1001572490496)) 
+@app.on_message(filters.chat(881581932) | filters.chat(-1001572490496)) 
 def tokai(Client, message) :
   heady = {
-      "user-agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
+      "user-agent" : "Mozilla/5.0 (Macintosh; ilters.chat(me) Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
       "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
       "accept-language": "en-US,en;q=0.9",
       "sec-ch-ua": "\"Chromium\";v=\"94\", \"Google Chrome\";v=\"94\", \";Not A Brand\";v=\"99\"",
