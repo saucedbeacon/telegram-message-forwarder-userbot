@@ -163,45 +163,45 @@ def work(client, message) :
 
 @app.on_message(filters.chat(-1001740864299) & (filters.incoming & filters.regex("!kyubi")))
 
-def mOne(client, message):
+def mOnek(client, message):
   caption = None
   msg = None
   if message.caption:
     if len(message.caption) > int(34):
       print("PassmOne")
-      mTwo(client, message)
+      mTwok(client, message)
     else :
       print("PasseOne")
-      exOne(client, message)
+      exOnek(client, message)
   elif message.text:
     if len(message.text) > int(34):
       print("PassmOne")
-      mTwo(client, message)
+      mTwok(client, message)
     else :
       print("PasseOne")
-      exOne(client, message)
+      exOnek(client, message)
   
     
-def exOne(client, message) :
+def exOnek(client, message) :
   print("PassaeOne")
   message.reply_text("""
          Jumlah karakter minimum tidak terpenuhi. Jumlah minimum karakter adalah 35
          ref: MENFESS_ERR_UNSUFFICENTCHAR
          TIME : """ + str(datetime.now()))
   
-def mTwo(client, message):
+def mTwok(client, message):
   try:
     if int(message.forward_from.id) in vList :
       print("Pass mTwo")
-      mThree(client, message)
+      mThreek(client, message)
     else :
       print("Sender Invalid")
-      exTwo(client, message)
+      exTwok(client, message)
   except AttributeError :
       print("Sender Privacy")
-      atTwo(client, message)
+      atTwok(client, message)
 
-def exTwo(client, message) :
+def exTwok(client, message) :
   app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
   app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
                 ref: SENDER_UUID_INVALID""")
@@ -212,13 +212,13 @@ ref: SENDER_UUID_INVALID
 UUID : """ + str(message.forward_from.id) + """
 TIME : """ + str(datetime.now()))
 
-def atTwo(client, message) :
+def atTwok(client, message) :
   app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
   message.reply_text("""
             Sistem GAGAL memverifikasi. Aktifkan pengaturan forwarding anda ke semua orang.
             ref: SENDER_PRIVACY_ISSUE""") 
   
-def preFr(Client, message):
+def preFrk(Client, message):
   message.reply_text("""
                 Sukses Validasi. Validation Success.
 Menfess anda BERHASIL terkirim. 
@@ -232,27 +232,27 @@ Sender UUID : """ + str(message.forward_from.id) +
 """
 Menfess ID : """  + str(message.message_id) + """
 TIME : """ + str(datetime.now()))
-  exFr(Client, message)
+  exFrk(Client, message)
 
-def exFr(Client, message):
+def exFrk(Client, message):
   if message.caption:
     message.copy(-1001669454516)
   elif message.text:
     app.send_message(-1001669454516, message.text)
 
-def exThree(client, message):
+def exThreek(client, message):
   waitingUsr.append(message.forward_from.id)
   print(waitingUsr)
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
-def delay(client, message):
+def delayk(client, message):
   message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   app.send_message(-1001565220245, message.text)
   sleep(5)
   preFr(client, message)
   
-def mThree(client, message):
+def mThreek(client, message):
   if int(message.forward_from.id) in waitingUsr :
     message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
   else :
@@ -260,7 +260,7 @@ def mThree(client, message):
 
 @app.on_message(filters.chat(-1001740864299) & filters.incoming & ~filters.regex("!kyubi"))
 
-def work(client, message) :
+def workka(client, message) :
   message.reply_text("""
   Gagal mendeteksi trigger. Gunakan trigger !kyubi.
   ref: MENFESS_ERR_NOTRIGGER
