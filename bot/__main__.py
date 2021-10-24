@@ -41,7 +41,7 @@ def check(Client, message) :
     check(Client, message)
  
 
-@app.on_message(filters.chat(881581932) | filters.chat(me)) 
+@app.on_message(filters.chat(881581932) | filters.chat(me) | filters.chat(-1001572490496)) 
 def tokai(Client, message) :
   heady = {
       "user-agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
