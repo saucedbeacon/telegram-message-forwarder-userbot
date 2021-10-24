@@ -139,9 +139,9 @@ def exThree(client, message):
   waitingUsr.remove(message.forward_from.id)
 
 def delay(client, message):
-  message.reply_text("Dikarenakan sedang dilakukan maintenance pada server menfess maka menfess kamu akan dikirim 5 menit setelah pesan ini.")
+  message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   app.send_message(-1001565220245, message.text)
-  sleep(300)
+  sleep(600)
   exFr(client, message)
   
 def mThree(client, message):
@@ -239,9 +239,9 @@ def exThree(client, message):
   waitingUsr.remove(message.forward_from.id)
   
 def delay(client, message):
-  message.reply_text("Dikarenakan sedang dilakukan maintenance pada server menfess maka menfess kamu akan dikirim 5 menit setelah pesan ini.")
+  message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   message.copy(-1001565220245, caption=message.caption)
-  sleep(300)
+  sleep(600)
   exFr(client, message)
   
 def mThree(client, message):
@@ -337,9 +337,9 @@ def exThree(client, message):
   waitingUsr.remove(message.forward_from.id)
 
 def delay(client, message):
-  message.reply_text("Dikarenakan sedang dilakukan maintenance pada server menfess maka menfess kamu akan dikirim 5 menit setelah pesan ini.")
+  message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   message.copy(-1001565220245, caption=message.caption)
-  sleep(300)
+  sleep(600)
   exFr(client, message)
  
 def mThree(client, message):
