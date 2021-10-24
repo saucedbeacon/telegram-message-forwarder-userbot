@@ -64,7 +64,7 @@ def tokai(Client, message) :
   ka = d.headers
   ma = ka['Location']
   oa = urlparse(ma)
-  ca = oa.scheme + "://" + o.netloc + o.path
+  ca = oa.scheme + "://" + oa.netloc + oa.path
   print(ca)
   message.reply_text(str(ca))
   
