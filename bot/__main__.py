@@ -119,7 +119,7 @@ def exThree(client, message):
 
 def delay(client, message):
   message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
-  app.send_message(-1001565220245, message.text)
+  message.copy(-1001565220245)
   sleep(600)
   preFr(client, message)
   
