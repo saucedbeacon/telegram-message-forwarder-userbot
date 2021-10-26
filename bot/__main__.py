@@ -103,7 +103,14 @@ Sender UUID : """ + str(message.forward_from.id) +
 """
 Menfess ID : """  + str(message.message_id) + """
 TIME : """ + str(datetime.now()))
-  exFr(Client, message)
+  if message.photo :
+    message.reply_text("Foto yang anda kirimkan akan diproses secara otomatis. Terimakasih")
+    exPhoto(Client, message)
+  else :
+    exFr(Client, message)
+
+def exPhoto(Client, message) :
+  message.copy(2056449872)
 
 def exFr(Client, message):
   if message.caption:
@@ -148,13 +155,17 @@ def antiLink(Client, message):
       k = message.entities[1]
       typeOne = r['type']
       typeTwo = k['type']
-      if typeOne == str(url) or typeTwo == str(url) :
+      if typeOne == str("url") or typeTwo == str("url") :
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
         delay(Client, message)
     elif len(message.entities) == 1:
       delay(Client,message)
 
+@app.on_message(filters.chat(2056449872) & filters.incoming & filters.regex("#df") & filters.regex("#tanya") & filters.regex("#curhat") & filters.regex("#pamer"))
+
+def frPhoto(Client, message):
+  exFr(Client, message)
 
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
 
