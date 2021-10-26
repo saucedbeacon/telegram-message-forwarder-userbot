@@ -169,7 +169,7 @@ def antiLink(Client, message):
 @app.on_message(filters.chat(2056449872) & filters.incoming & filters.photo & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer"))
 
 def frPhoto(Client, message):
-  message.copy(-1001565220245)
+  message.copy(-1001183067327)
   print("PHOTO SEND")
 
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
@@ -315,3 +315,4 @@ def worka(client, message) :
 ############################################################################################################
 
 app.run()
+
