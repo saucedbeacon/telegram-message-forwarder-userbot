@@ -72,6 +72,13 @@ def mTwo(client, message):
       print("Sender Privacy")
       atTwo(client, message)
 
+def mThree(Client, message):
+  if message.forward_from.id in waitingUsr :
+    message.reply_text("[429] Too Frequent")
+  else :
+    antiLink(Client, message)
+    
+    
 def exTwo(client, message) :
   app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
   app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
@@ -115,8 +122,10 @@ def exPhoto(Client, message) :
 def exFr(Client, message):
   if message.caption:
     message.copy(-1001183067327)
+    exThree(client, message)
   elif message.text:
     app.send_message(-1001183067327, message.text)
+    exThree(client, message)
 
 def exThree(client, message):
   waitingUsr.append(message.forward_from.id)
@@ -127,14 +136,9 @@ def exThree(client, message):
 def delay(client, message):
   message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   message.copy(-1001565220245)
+  print("Delay Module")
   sleep(5)
   preFr(client, message)
-  
-def mThree(client, message):
-  if int(message.forward_from.id) in waitingUsr :
-    message.reply_text("Mohon menunggu 3 menit untuk mengirimkan menfess kembali.")
-  else :
-    antiLink(client, message)
     
 def antiLink(Client, message):
   if message.caption:
