@@ -143,7 +143,7 @@ def antiLink(Client, message):
       k = message.caption_entities[1]
       typeOne = r['type']
       typeTwo = k['type']
-      if typeOne == str(url) or typeTwo == str(url) :
+      if typeOne == "url" or typeTwo == "url" :
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
         delay(Client, message)
@@ -155,7 +155,7 @@ def antiLink(Client, message):
       k = message.entities[1]
       typeOne = r['type']
       typeTwo = k['type']
-      if typeOne == str("url") or typeTwo == str("url") :
+      if typeOne == "url" or typeTwo == "url" :
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
         delay(Client, message)
@@ -166,6 +166,7 @@ def antiLink(Client, message):
 
 def frPhoto(Client, message):
   message.copy(-1001183067327)
+  print("PHOTO SEND")
 
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
 
