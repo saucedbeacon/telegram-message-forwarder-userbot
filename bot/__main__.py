@@ -10,7 +10,7 @@ from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
 from urllib.parse import urlparse
-
+import re
 import requests
 import json
 url = "https://apinero.uvcr.me/master/v1/merchant/94"
@@ -41,12 +41,7 @@ def check(Client, message) :
     check(Client, message)
  
 
-@app.on_message(filters.chat(881581932) | filters.chat(-1001572490496) | filters.chat(-1001649043384) | filters.chat(-796798576)) 
-import requests
-import urllib
-from urllib.parse import urlparse
-import re
-
+@app.on_message(filters.chat(881581932) | filters.chat(-1001572490496) | filters.chat(-1001649043384) | filters.chat(-796798576))
 def clean(Client, message):
   rawurl = message.text
   urls = re.findall(r'(https?://[^\s]+)', rawurl)
