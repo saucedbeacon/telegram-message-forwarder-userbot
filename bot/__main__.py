@@ -53,9 +53,9 @@ def split(Client, message, curl):
   parse = urlparse(curl)
   domain = parse.netloc
   if domain == "tokopedia.link":
-    tokopedia(Client, message)
+    tokopedia(Client, message, curl)
   if domain == "blibli.app.link":
-    blibli(Client, message)
+    blibli(Client, message, curl)
 
 def tokopedia(Client, message, curl) :
   heady = {
