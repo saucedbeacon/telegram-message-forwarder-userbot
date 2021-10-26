@@ -166,7 +166,7 @@ def antiLink(Client, message):
     elif len(message.entities) == 1:
       delay(Client, message)
 
-@app.on_message(filters.chat(2056449872) & filters.incoming & filters.photo & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer"))
+@app.on_message(filters.chat(2056449872) & filters.incoming & filters.photo & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
 def frPhoto(Client, message):
   message.copy(-1001183067327)
