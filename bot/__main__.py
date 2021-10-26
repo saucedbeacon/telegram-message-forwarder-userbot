@@ -79,7 +79,7 @@ def mThree(Client, message):
     antiLink(Client, message)
     
     
-def exTwo(client, message) :
+def exTwo(Client, message) :
   app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
   app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
                 ref: SENDER_UUID_INVALID""")
@@ -90,7 +90,7 @@ ref: SENDER_UUID_INVALID
 UUID : """ + str(message.forward_from.id) + """
 TIME : """ + str(datetime.now()))
 
-def atTwo(client, message) :
+def atTwo(Client, message) :
   app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
   message.reply_text("""
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
@@ -122,23 +122,23 @@ def exPhoto(Client, message) :
 def exFr(Client, message):
   if message.caption:
     message.copy(-1001183067327)
-    exThree(client, message)
+    exThree(Client, message)
   elif message.text:
     app.send_message(-1001183067327, message.text)
-    exThree(client, message)
+    exThree(Client, message)
 
-def exThree(client, message):
+def exThree(Client, message):
   waitingUsr.append(message.forward_from.id)
   print(waitingUsr)
   sleep(180)
   waitingUsr.remove(message.forward_from.id)
 
-def delay(client, message):
+def delay(Client, message):
   message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   message.copy(-1001565220245)
   print("Delay Module")
   sleep(5)
-  preFr(client, message)
+  preFr(Client, message)
     
 def antiLink(Client, message):
   if message.caption:
@@ -152,7 +152,7 @@ def antiLink(Client, message):
       else :
         delay(Client, message)
     elif len(message.caption_entities) == 1:
-      delay(Client,message)
+      delay(Client, message)
   elif message.text:
     if len(message.entities) > 1 :
       r = message.entities[0]
@@ -164,7 +164,7 @@ def antiLink(Client, message):
       else :
         delay(Client, message)
     elif len(message.entities) == 1:
-      delay(Client,message)
+      delay(Client, message)
 
 @app.on_message(filters.chat(2056449872) & filters.incoming & filters.photo & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer"))
 
