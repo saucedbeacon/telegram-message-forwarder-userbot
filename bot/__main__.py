@@ -42,7 +42,27 @@ def check(Client, message) :
  
 
 @app.on_message(filters.chat(881581932) | filters.chat(-1001572490496) | filters.chat(-1001649043384) | filters.chat(-796798576)) 
-def tokai(Client, message) :
+import requests
+import urllib
+from urllib.parse import urlparse
+import re
+
+def clean(Client, message):
+  rawurl = message.text
+  urls = re.findall(r'(https?://[^\s]+)', rawurl)
+  print(urls)
+  curl = urls[0]
+  split(Client, message, curl)
+
+def split(Client, message, curl):
+  parse = urlparse(curl)
+  domain = parse.netloc
+  if domain == "tokopedia.link":
+    tokopedia(Client, message)
+  if domain == "blibli.app.link":
+    blibli(Client, message)
+
+def tokopedia(Client, message, curl) :
   heady = {
       "user-agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
       "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -57,7 +77,7 @@ def tokai(Client, message) :
       "upgrade-insecure-requests": "1"
     }
 
-  r = requests.get(str(message.text), headers = heady, allow_redirects = False)
+  r = requests.get(str(curl), headers = heady, allow_redirects = False)
   k = r.headers
   m = k['Location']
   d = requests.get(str(m), headers = heady, allow_redirects = False)
@@ -66,7 +86,30 @@ def tokai(Client, message) :
   oa = urlparse(ma)
   ca = oa.scheme + "://" + oa.netloc + oa.path
   print(ca)
-  message.reply_text(str(ca))
+  message.reply_text(ca)
+
+def blibli(Client, message, curl):
+  heady = {
+        "user-agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "accept-language": "en-US,en;q=0.9",
+        "sec-ch-ua": "\"Chromium\";v=\"94\", \"Google Chrome\";v=\"94\", \";Not A Brand\";v=\"99\"",
+        "sec-ch-ua-mobile": "?1",
+        "sec-ch-ua-platform": "\"Android\"",
+        "sec-fetch-dest": "document",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1",
+        "upgrade-insecure-requests": "1"
+      }
+  r = requests.get(curl, headers=heady, allow_redirects = False)
+  a = r.headers
+  lc = a["Location"]
+  ps = urlparse(lc)
+  ca = ps.scheme + "://" + ps.netloc + ps.path
+  print(ca)
+  message.reply_text(ca)
+
   
 @app.on_message(filters.audio & filters.chat(-1001504966450))
 
