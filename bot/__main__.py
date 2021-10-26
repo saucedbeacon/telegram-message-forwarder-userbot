@@ -165,7 +165,7 @@ def antiLink(Client, message):
 @app.on_message(filters.chat(2056449872) & filters.incoming & filters.regex("#df") & filters.regex("#tanya") & filters.regex("#curhat") & filters.regex("#pamer"))
 
 def frPhoto(Client, message):
-  exFr(Client, message)
+  message.copy(-1001183067327)
 
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
 
