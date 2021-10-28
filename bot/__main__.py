@@ -117,6 +117,7 @@ TIME : """ + str(datetime.now()))
     exFr(Client, message)
 
 def exPhoto(Client, message) :
+  app.get_chat("OAHVDONWBWatermarkHandlerbot")
   message.copy(2056449872)
 
 def exFr(Client, message):
