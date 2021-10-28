@@ -80,6 +80,7 @@ def mThree(Client, message):
     
     
 def exTwo(Client, message) :
+  app.get_chat("Omega_Telegram")
   app.send_message(881581932, "Nama Pengirim > " + str(message.forward_from.first_name))
   app.send_message(881581932, "#FAIL ADA MENFESS GAGAL. UUID: " + str(message.forward_from.id) + """
                 ref: SENDER_UUID_INVALID""")
@@ -91,6 +92,7 @@ UUID : """ + str(message.forward_from.id) + """
 TIME : """ + str(datetime.now()))
 
 def atTwo(Client, message) :
+  app.get_chat("Omega_Telegram")
   app.send_message(881581932, "SENDER_PRIVACY_ISSUE > " + str(message.forward_sender_name))
   message.reply_text("""
             Sistem GAGAL memverifikasi. Lihat https://t.me/c/1183067327/247117
