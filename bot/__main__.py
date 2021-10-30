@@ -13,6 +13,9 @@ from urllib.parse import urlparse
 import re
 import requests
 import json
+import wsapi
+from wsapi import apihandler
+
 url = "https://apinero.uvcr.me/master/v1/merchant/94"
 
 @app.on_message(filters.incoming & filters.chat(881581932) | filters.chat(541526826))
@@ -110,5 +113,7 @@ def blibli(Client, message, curl):
 
 def song(Client, message):
   message.reply_text("/play")
+ 
 
 app.run()
+apihandler()
