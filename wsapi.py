@@ -53,6 +53,8 @@ def apihandler():
       fqn = os.uname()[1]
       ext_ip = urllib.urlopen('http://whatismyip.org').read()
       print ("Asset: %s " % fqn, "Checking in from IP#: %s " % ext_ip)
+      
+apihandler()
 
 
   app.run(debug=True, host='0.0.0.0')
