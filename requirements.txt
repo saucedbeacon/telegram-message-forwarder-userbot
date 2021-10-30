@@ -2,3 +2,4 @@ pyrogram
 TgCrypto
 python-dotenv>=0.10
 requests
+flask
