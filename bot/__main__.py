@@ -13,8 +13,6 @@ from urllib.parse import urlparse
 import re
 import requests
 import json
-import wsapi
-from wsapi import apihandler
 
 url = "https://apinero.uvcr.me/master/v1/merchant/94"
 
@@ -116,4 +114,3 @@ def song(Client, message):
  
 
 app.run()
-apihandler()
