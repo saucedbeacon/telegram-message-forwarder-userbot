@@ -4,6 +4,7 @@ import datetime
 import validate
 from validate import vList
 import waiting
+import requests
 from waiting import waitingUsr
 from datetime import datetime
 from time import sleep
@@ -62,7 +63,11 @@ def exOne(client, message) :
   
 def mTwo(client, message):
   try:
-    if int(message.forward_from.id) in vList :
+    import requests
+    uid = message.forward_from.id
+    r = requests.get('https://ows-api.herokuapp.com/df/api/check/{}'.format(uid))
+    print(r.status_code)
+    if str(r.status_code) == str(200) :
       print("Pass mTwo")
       mThree(client, message)
     else :
@@ -318,4 +323,3 @@ def worka(client, message) :
 ############################################################################################################
 
 app.run()
-
