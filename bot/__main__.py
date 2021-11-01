@@ -243,7 +243,11 @@ def exOnea(client, message) :
   
 def mTwoa(client, message):
   try:
-    if int(message.forward_from.id) in vList :
+    import requests
+    uid = message.forward_from.id
+    r = requests.get('https://ows-api.herokuapp.com/df/api/check/{}'.format(uid))
+    print(r.status_code)
+    if str(r.status_code) == str(200) :
       print("Pass mTwo")
       mThreea(client, message)
     else :
