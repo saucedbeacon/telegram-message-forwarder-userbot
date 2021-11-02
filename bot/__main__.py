@@ -107,7 +107,7 @@ def blibli(Client, message, curl):
   ps = urlparse(lc)
   ca = ps.scheme + "://" + ps.netloc + ps.path
   print(ca)
-  message.reply_text(ca)
+  message.reply_text(str(ca))
 
   
 @app.on_message(filters.audio & filters.chat(-1001504966450))
