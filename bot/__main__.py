@@ -44,7 +44,10 @@ def check(Client, message) :
 
 @app.on_message(filters.chat(881581932) | filters.chat(-1001572490496) | filters.chat(-1001649043384) | filters.chat(-796798576))
 def clean(Client, message):
-  rawurl = message.text
+  if message.caption:
+    rawurl = message.caption
+  else:
+    rawurl = message.text
   urls = re.findall(r'(https?://[^\s]+)', rawurl)
   print(urls)
   curl = urls[0]
