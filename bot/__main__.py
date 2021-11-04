@@ -51,6 +51,8 @@ def clean(Client, message):
   urls = re.findall(r'(https?://[^\s]+)', rawurl)
   print(urls)
   curl = urls[0]
+  if len(urls) > 1:
+    ncurl = urls[1]
   split(Client, message, curl)
 
 def split(Client, message, curl):
@@ -62,6 +64,25 @@ def split(Client, message, curl):
     blibli(Client, message, curl)
   elif domain == "shp.ee":
     shopee(Client, message, curl)
+  def split(Client, message, curl, ncurl):
+  parse = urlparse(curl)
+  domain = parse.netloc
+  if domain == "tokopedia.link":
+    tokopedia(Client, message, curl)
+  elif domain == "blibli.app.link":
+    blibli(Client, message, curl)
+  elif domain == "shp.ee":
+    shopee(Client, message, curl)
+  if ncurl :
+    curl = ncurl
+    parse = urlparse(curl)
+    domain = parse.netloc
+    if domain == "tokopedia.link":
+      tokopedia(Client, message, curl)
+    elif domain == "blibli.app.link":
+      blibli(Client, message, curl)
+    elif domain == "shp.ee":
+      shopee(Client, message, curl)
     
 def shopee(Client, message, curl):
   r = curl
