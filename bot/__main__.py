@@ -58,8 +58,22 @@ def split(Client, message, curl):
   domain = parse.netloc
   if domain == "tokopedia.link":
     tokopedia(Client, message, curl)
-  if domain == "blibli.app.link":
+  elif domain == "blibli.app.link":
     blibli(Client, message, curl)
+  elif domain == "shp.ee":
+    shopee(Client, message, curl)
+    
+def shopee(Client, message, curl):
+  r = curl
+  j = requests.get(r, allow_redirects= False)
+  k = urlparse(j.headers["Location"])
+  sl = str(k.scheme) + "://" + str(k.netloc) + str(k.path)
+  nr = requests.get(sl, allow_redirects= False)
+  nh = nr.headers
+  st = urlparse(nr.headers["Location"])
+  fl = st.scheme + "://" + st.netloc + st.path
+  print(fl)
+  message.reply_text(fl)
 
 def tokopedia(Client, message, curl) :
   heady = {
