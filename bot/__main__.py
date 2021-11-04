@@ -53,18 +53,11 @@ def clean(Client, message):
   curl = urls[0]
   if len(urls) > 1:
     ncurl = urls[1]
-  split(Client, message, curl)
+  else :
+    ncurl = None
+  split(Client, message, curl, ncurl)
 
-def split(Client, message, curl):
-  parse = urlparse(curl)
-  domain = parse.netloc
-  if domain == "tokopedia.link":
-    tokopedia(Client, message, curl)
-  elif domain == "blibli.app.link":
-    blibli(Client, message, curl)
-  elif domain == "shp.ee":
-    shopee(Client, message, curl)
-  def split(Client, message, curl, ncurl):
+def split(Client, message, curl, ncurl):
   parse = urlparse(curl)
   domain = parse.netloc
   if domain == "tokopedia.link":
@@ -83,6 +76,7 @@ def split(Client, message, curl):
       blibli(Client, message, curl)
     elif domain == "shp.ee":
       shopee(Client, message, curl)
+
     
 def shopee(Client, message, curl):
   r = curl
