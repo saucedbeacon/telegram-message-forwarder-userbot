@@ -150,7 +150,7 @@ def delay(Client, message):
   message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
   message.copy(-1001565220245)
   print("Delay Module")
-  sleep(5)
+  sleep(180)
   preFr(Client, message)
     
 def antiLink(Client, message):
@@ -163,9 +163,9 @@ def antiLink(Client, message):
       if typeOne == "url" or typeTwo == "url" :
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
-        delay(Client, message)
+        checkProfanity(Client, message)
     elif len(message.caption_entities) == 1:
-      delay(Client, message)
+      checkProfanity(Client, message)
   elif message.text:
     if len(message.entities) > 1 :
       r = message.entities[0]
@@ -175,9 +175,9 @@ def antiLink(Client, message):
       if typeOne == "url" or typeTwo == "url" :
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
-        delay(Client, message)
+        checkProfanity(Client, message)
     elif len(message.entities) == 1:
-      delay(Client, message)
+      checkProfanity(Client, message)
 
 def checkProfanity(Client, message):
   cs = ['coli', 'ultravoucher', 'ultra voucher', 'ultra', 'ultravocer', 'ultrapocer', 'lakuemas', 'le', 'uv', 'kompen', 'kompensasi', 'perpanjang', 'perpanjangan', 'testword', 'sword']
