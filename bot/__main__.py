@@ -12,6 +12,9 @@ from pyrogram import filters
 from bot import LOG, app, advance_config, chats_data, from_chats, to_chats, \
                 remove_strings, replace_string, sudo_users
 from bot.helper.utils import get_formatted_chat
+import better_profanity
+from better_profanity import profanity
+
 
 
 import os
@@ -31,6 +34,8 @@ from bot.helper.utils import get_formatted_chat
 ############################################################################################################
 ##################################### START MENFESS DISCOUNTFESS ###########################################
 ############################################################################################################
+
+suspendList = []
 
 @app.on_message(filters.chat(-1001573969940) & (filters.incoming & (filters.text | filters.photo | filters.video | filters.animation)) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
@@ -173,6 +178,24 @@ def antiLink(Client, message):
         delay(Client, message)
     elif len(message.entities) == 1:
       delay(Client, message)
+
+def checkProfanity(Client, message):
+  cs = ['coli', 'ultravoucher', 'ultra voucher', 'ultra', 'ultravocer', 'ultrapocer', 'lakuemas', 'le', 'uv', 'kompen', 'kompensasi', 'perpanjang', 'perpanjangan', 'testword', 'sword']
+  profanity.load_censor_words(cs)
+  if message.text:
+    mt = message.text
+  elif message.caption:
+    mt= message.caption
+  
+  if mt == True:
+    message.reply_text("Failed")
+    suspendList.append(message.forward_from.id)
+  else :
+    if message.forward_from.id in suspendList:
+      message.text("SUSPENDED USER > FORBIDDEN ACCESS")
+    else :
+      delay(Client, message)
+  
 
 @app.on_message(filters.chat(2056449872) & filters.incoming & (filters.photo | filters.video | filters.animation) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
