@@ -32,7 +32,7 @@ from bot.helper.utils import get_formatted_chat
 ##################################### START MENFESS DISCOUNTFESS ###########################################
 ############################################################################################################
 
-@app.on_message(filters.chat(-1001573969940) & (filters.incoming & filters.text | filters.photo | filters.video | filters.animation & filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
+@app.on_message(filters.chat(-1001573969940) & (filters.incoming & (filters.text | filters.photo | filters.video | filters.animation)) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
 
 def mOne(client, message):
@@ -117,7 +117,7 @@ Sender UUID : """ + str(message.forward_from.id) +
 """
 Menfess ID : """  + str(message.message_id) + """
 TIME : """ + str(datetime.now()))
-  if message.photo or message.video :
+  if message.photo or message.video or message.animation :
     message.reply_text("Foto yang anda kirimkan akan diproses secara otomatis. Terimakasih")
     exPhoto(Client, message)
   else :
@@ -180,7 +180,7 @@ def frPhoto(Client, message):
   message.copy(-1001183067327)
   print("PHOTO SEND")
 
-@app.on_message(filters.chat(-1001573969940) & filters.incoming & ~filters.regex("#df") & ~filters.regex("#tanya") & ~filters.regex("#curhat") & ~filters.regex("#pamer"))
+@app.on_message(filters.chat(-1001573969940) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer")))
 
 def work(client, message) :
   message.reply_text("""
