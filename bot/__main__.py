@@ -82,6 +82,7 @@ def mThree(Client, message):
     message.reply_text("[429] Too Frequent")
   else :
     antiLink(Client, message)
+    exThree(Client, message)
     
     
 def exTwo(Client, message) :
@@ -130,10 +131,8 @@ def exPhoto(Client, message) :
 def exFr(Client, message):
   if message.caption:
     message.copy(-1001183067327)
-    exThree(Client, message)
   elif message.text:
     app.send_message(-1001183067327, message.text)
-    exThree(Client, message)
 
 def exThree(Client, message):
   waitingUsr.append(message.forward_from.id)
@@ -142,10 +141,10 @@ def exThree(Client, message):
   waitingUsr.remove(message.forward_from.id)
 
 def delay(Client, message):
-  message.reply_text("Menfess anda sedang dalam antrian dan menunggu verifikasi.")
+  message.reply_text("MENFESS AKAN MEMERLUKAN WAKTU PROSES LEBIH LAMA DARI BIASANYA. MOHON MENUNGGU DAN TIDAK MENGIRIMKAN DOUBLEFESS")
   message.copy(-1001565220245)
   print("Delay Module")
-  sleep(5)
+  sleep(180)
   preFr(Client, message)
     
 def antiLink(Client, message):
