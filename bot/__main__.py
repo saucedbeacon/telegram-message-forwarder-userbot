@@ -144,7 +144,7 @@ def delay(Client, message):
   message.reply_text("MENFESS AKAN MEMERLUKAN WAKTU PROSES LEBIH LAMA DARI BIASANYA. MOHON MENUNGGU DAN TIDAK MENGIRIMKAN DOUBLEFESS")
   message.copy(-1001565220245)
   print("Delay Module")
-  sleep(180)
+  sleep(1)
   preFr(Client, message)
     
 def antiLink(Client, message):
