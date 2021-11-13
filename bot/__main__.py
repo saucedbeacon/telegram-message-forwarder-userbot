@@ -187,6 +187,7 @@ def work(Client, message) :
   ref: MENFESS_ERR_NOTRIGGER
   TIME : """ + str(datetime.now()))
   print(message.contact.phone_number)
+  print(message)
 
 
 
