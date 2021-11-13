@@ -182,12 +182,20 @@ def frPhoto(Client, message):
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer")))
 
 def work(Client, message) :
-  message.reply_text("""
-  Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
-  ref: MENFESS_ERR_NOTRIGGER
-  TIME : """ + str(datetime.now()))
-  print(message.contact.phone_number)
-  print(message)
+  if message.contact.phone_number :
+    pnum = message.contact.phone_number
+    usrId = message.forward_from.id
+    if message.contact.user_id == usrId:
+      r = requests.get('https://ows-api.herokuapp.com/df/api/verify/{}/{}'.format(usrId, pnum))
+      if r.status_code == 200 :
+        app.reply_text("SUKSES MELAKUKAN VERIFIKASI")
+      if r.status_code == 500 :
+        app.reply_text("GAGAL MELAKUKAN VERIFIKASI")
+  else: 
+    message.reply_text("""
+    Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
+    ref: MENFESS_ERR_NOTRIGGER
+    TIME : """ + str(datetime.now()))
 
 
 
