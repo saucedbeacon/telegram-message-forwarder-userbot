@@ -154,7 +154,7 @@ def antiLink(Client, message):
       k = message.caption_entities[1]
       typeOne = r['type']
       typeTwo = k['type']
-      if typeOne == "url" or typeTwo == "url" :
+      if typeOne == "url" or typeTwo == "url" or typeOne == 'text_link' or typeTwo == 'text_link':
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
         delay(Client, message)
@@ -166,7 +166,7 @@ def antiLink(Client, message):
       k = message.entities[1]
       typeOne = r['type']
       typeTwo = k['type']
-      if typeOne == "url" or typeTwo == "url" :
+      if typeOne == "url" or typeTwo == "url" or typeOne == 'text_link' or typeTwo == 'text_link':
         message.reply_text("Dilarang mengirimkan tautan. Links are forbidden.")
       else :
         delay(Client, message)
