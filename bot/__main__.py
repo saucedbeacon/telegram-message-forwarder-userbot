@@ -193,7 +193,7 @@ def work(Client, message) :
 ##################################### END MENFESS DISCOUNTFESS #############################################
 ############################################################################################################
 
-@app.on_message(filters.chat(-1001573969940) & filters.incoming & filters.contact)
+@app.on_message(filters.chat(-1001573969940) & filters.incoming)
 
 def verify(Client, message) :
   print(message)
