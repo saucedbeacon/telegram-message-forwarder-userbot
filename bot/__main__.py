@@ -181,7 +181,7 @@ def frPhoto(Client, message):
 
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer")))
 
-def work(client, message) :
+def work(Client, message) :
   message.reply_text("""
   Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
   ref: MENFESS_ERR_NOTRIGGER
@@ -192,6 +192,11 @@ def work(client, message) :
 ############################################################################################################
 ##################################### END MENFESS DISCOUNTFESS #############################################
 ############################################################################################################
+
+@app.on_message(filters.chat(-1001573969940) & filters.incoming & filters.contact)
+
+def verify(Client, message) :
+  print(message)
 
 ############################################################################################################
 ####################################### START KUKKA BROADCAST ##############################################
