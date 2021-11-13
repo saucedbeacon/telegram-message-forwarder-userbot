@@ -196,7 +196,7 @@ def work(Client, message) :
 @app.on_message(filters.chat(-1001573969940) & filters.incoming)
 
 def verify(Client, message) :
-  print(message)
+  print(str(message))
 
 ############################################################################################################
 ####################################### START KUKKA BROADCAST ##############################################
