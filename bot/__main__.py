@@ -188,9 +188,12 @@ def work(Client, message) :
     if message.contact.user_id == usrId:
       r = requests.get('https://ows-api.herokuapp.com/df/api/verify/{}/{}'.format(usrId, pnum))
       if r.status_code == 200 :
-        app.reply_text("SUKSES MELAKUKAN VERIFIKASI")
+        message.reply_text("""
+    Sukses melakukan verifikasi.
+    ref: VERIFICATION_SUCCESSFULLY.
+    TIME : """ + str(datetime.now()))
       if r.status_code == 500 :
-        app.reply_text("GAGAL MELAKUKAN VERIFIKASI")
+        message.reply_text("GAGAL MELAKUKAN VERIFIKASI" + str(datetime.now()))
   else: 
     message.reply_text("""
     Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
