@@ -182,7 +182,7 @@ def frPhoto(Client, message):
 @app.on_message(filters.chat(-1001573969940) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer")))
 
 def work(Client, message) :
-  if message.contact.phone_number :
+  if message.contact != None :
     pnum = message.contact.phone_number
     usrId = message.forward_from.id
     if message.contact.user_id == usrId:
@@ -194,7 +194,7 @@ def work(Client, message) :
     TIME : """ + str(datetime.now()))
       if r.status_code == 500 :
         message.reply_text("GAGAL MELAKUKAN VERIFIKASI" + str(datetime.now()))
-  else: 
+  else : 
     message.reply_text("""
     Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
     ref: MENFESS_ERR_NOTRIGGER
