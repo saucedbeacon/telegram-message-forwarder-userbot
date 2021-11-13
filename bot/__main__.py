@@ -186,7 +186,7 @@ def work(Client, message) :
   Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
   ref: MENFESS_ERR_NOTRIGGER
   TIME : """ + str(datetime.now()))
-  print(message)
+  print(message.contact.phone_number)
 
 
 
