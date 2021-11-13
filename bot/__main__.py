@@ -186,6 +186,7 @@ def work(Client, message) :
   Gagal mendeteksi trigger. Gunakan #tanya | #pamer | #df | #curhat.
   ref: MENFESS_ERR_NOTRIGGER
   TIME : """ + str(datetime.now()))
+  print(message)
 
 
 
@@ -193,10 +194,6 @@ def work(Client, message) :
 ##################################### END MENFESS DISCOUNTFESS #############################################
 ############################################################################################################
 
-@app.on_message(filters.chat(-1001573969940) & filters.incoming)
-
-def verify(Client, message) :
-  print(str(message))
 
 ############################################################################################################
 ####################################### START KUKKA BROADCAST ##############################################
