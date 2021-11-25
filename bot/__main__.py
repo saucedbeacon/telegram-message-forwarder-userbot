@@ -65,7 +65,7 @@ def mTwo(client, message):
   try:
     import requests
     uid = message.forward_from.id
-    r = requests.get('https://ows-api.herokuapp.com/df/api/check/{}'.format(uid))
+    r = requests.get('https://ns1.kukka.link/xVabfaHdbw/df/api/check/{}'.format(uid))
     print(r.status_code)
     if str(r.status_code) == str(200) :
       print("Pass mTwo")
