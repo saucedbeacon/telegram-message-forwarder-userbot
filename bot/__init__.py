@@ -77,8 +77,7 @@ with app:
     LOG.info(chats_data)
   else:
     if len(to_chats) == 0 or len(from_chats) == 0:
-      LOG.error("Set either ADVANCE_CONFIG or FROM_CHATS and TO_CHATS")
-      sys.exit(1)
+      console.log("TOCHTN")
     else:
       from_chats = get_formatted_chats(from_chats, app)
       to_chats = get_formatted_chats(to_chats, app)
