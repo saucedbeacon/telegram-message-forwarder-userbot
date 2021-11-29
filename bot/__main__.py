@@ -34,21 +34,23 @@ def antiaf(Client, message):
     ncurl = None
   parse = urlparse(curl)
   domain = parse.netloc
-  if domain == "tokopedia.link":
-    checktokopedia(Client, message, curl)
-  elif domain == "shp.ee":
-    kick(Client, message)
-    app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
-  elif domain == "u.jd.id":
-    kick(Client, message)
-    app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of JDID AFFILIATE")
-  if ncurl:
-    curl = ncurl
+  try:
     if domain == "tokopedia.link":
       checktokopedia(Client, message, curl)
     elif domain == "shp.ee":
       kick(Client, message)
       app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
+    elif domain == "u.jd.id":
+      kick(Client, message)
+      app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of JDID AFFILIATE")
+  except:
+    if ncurl:
+      curl = ncurl
+      if domain == "tokopedia.link":
+        checktokopedia(Client, message, curl)
+      elif domain == "shp.ee":
+        kick(Client, message)
+        app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
 
 
 def checktokopedia(Client, message, curl):
