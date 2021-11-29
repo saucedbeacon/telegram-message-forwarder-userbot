@@ -15,6 +15,10 @@ import re
 import requests
 import json
 
+@app.on_message(filters.service)
+def antiservice(Client, message):
+  app.delete_messages(message.chat.id, message.message_id)
+
 @app.on_message(filters.chat(-1001725817222))
 def antiaf(Client, message):
   if message.caption:
@@ -34,6 +38,18 @@ def antiaf(Client, message):
     checktokopedia(Client, message, curl)
   elif domain == "shp.ee":
     kick(Client, message)
+    app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
+  elif domain == "u.jd.id":
+    kick(Client, message)
+    app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of JDID AFFILIATE")
+  if ncurl:
+    curl = ncurl
+    if domain == "tokopedia.link":
+      checktokopedia(Client, message, curl)
+    elif domain == "shp.ee":
+      kick(Client, message)
+      app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
+
 
 def checktokopedia(Client, message, curl):
   heady = {
@@ -63,7 +79,7 @@ def checktokopedia(Client, message, curl):
   try:
     abn = incheck['aff_unique_id']
     kick(Client, message)
-    app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of TOKOPEDIA/SHOPEE AFFILIATE")
+    app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of TOKOPEDIA AFFILIATE")
     print("KICK")
   except :
     print("SAFELINK")
@@ -72,6 +88,7 @@ def kick(Client, message):
   user_id = message.from_user.id
   chat_id = int(-1001725817222)
   app.kick_chat_member(chat_id, user_id)
+  app.delete_messages(message.chat.id, message.message_id)
   print("KICKED")
 
 app.run()
