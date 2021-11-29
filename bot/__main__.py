@@ -73,3 +73,5 @@ def kick(Client, message):
   chat_id = int(-1001725817222)
   app.kick_chat_member(chat_id, user_id)
   print("KICKED")
+  
+app.run()
