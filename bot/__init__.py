@@ -55,6 +55,7 @@ elif bot_token:
   app = Client(":memory:", api_id, api_hash, bot_token=bot_token)
 else:
   LOG.error("Set either TELEGRAM_SESSION or BOT_TOKEN variable.")
+  #
   sys.exit(1)
 
 with app:
