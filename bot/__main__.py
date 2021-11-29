@@ -19,7 +19,7 @@ import json
 def antiservice(Client, message):
   app.delete_messages(message.chat.id, message.message_id)
 
-@app.on_message(filters.chat(-1001494559873) | filters.chat(-1001333654036))
+@app.on_message(filters.chat(-1001494559873))
 def antiaf(Client, message):
   if message.caption:
     rawurl = message.caption
@@ -52,6 +52,39 @@ def antiaf(Client, message):
         kick(Client, message)
         app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
 
+
+@app.on_message(filters.chat(-1001333654036))
+def antiaf(Client, message):
+  if message.caption:
+    rawurl = message.caption
+  else:
+    rawurl = message.text
+  urls = re.findall(r'(https?://[^\s]+)', rawurl)
+  print(urls)
+  curl = urls[0]
+  if len(urls) > 1:
+    ncurl = urls[1]
+  else :
+    ncurl = None
+  parse = urlparse(curl)
+  domain = parse.netloc
+  try:
+    if domain == "tokopedia.link":
+      checktokopedia(Client, message, curl)
+    elif domain == "shp.ee":
+      kick(Client, message)
+      app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
+    elif domain == "u.jd.id":
+      kick(Client, message)
+      app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of JDID AFFILIATE")
+  except:
+    if ncurl:
+      curl = ncurl
+      if domain == "tokopedia.link":
+        checktokopedia(Client, message, curl)
+      elif domain == "shp.ee":
+        kick(Client, message)
+        app.send_message(-1001747493889, f"{message.from_user.id} {message.from_user.first_name}, kicked because of SHOPEE AFFILIATE")
 
 def checktokopedia(Client, message, curl):
   heady = {
