@@ -42,7 +42,7 @@ def check(Client, message) :
     check(Client, message)
  
 
-@app.on_message(filters.chat(881581932) | filters.chat(-1001572490496) | filters.chat(-1001649043384) | filters.chat(-796798576))
+@app.on_message(filters.chat(881581932) | filters.chat(-1001572490496) | filters.chat(-1001649043384) | filters.chat(-796798576) | filters.chat(-1001504966450))
 def clean(Client, message):
   if message.caption:
     rawurl = message.caption
