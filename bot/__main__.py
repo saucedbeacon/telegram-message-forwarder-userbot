@@ -19,7 +19,7 @@ import json
 def antiservice(Client, message):
   app.delete_messages(message.chat.id, message.message_id)
 
-@app.on_message(filters.chat(-1001725817222))
+@app.on_message(filters.chat(-1001494559873) | filters.chat(-1001333654036))
 def antiaf(Client, message):
   if message.caption:
     rawurl = message.caption
@@ -88,8 +88,21 @@ def checktokopedia(Client, message, curl):
   
 def kick(Client, message):
   user_id = message.from_user.id
-  chat_id = int(-1001725817222)
-  app.kick_chat_member(chat_id, user_id)
+  cidbs = int(-1001494559873)
+  ciddf = int(-1001333654036)
+  ciddfch = int(-1001183067327)
+  try:
+    app.kick_chat_member(cidbs, user_id)
+  except:
+    print("KICK FAILED BECAUSE MEMBER DIDN/'T JOIN")
+  try:
+    app.kick_chat_member(ciddf, user_id)
+  except:
+    print("KICK FAILED BECAUSE MEMBER DIDN/'T JOIN")
+  try:
+    app.kick_chat_member(ciddfch, user_id)
+  except:
+    print("KICK FAILED BECAUSE MEMBER DIDN/'T JOIN")
   app.delete_messages(message.chat.id, message.message_id)
   print("KICKED")
 
