@@ -150,14 +150,14 @@ def exFr(Client, message):
     a = message.copy(THROW_CHAT)
     msgID = a.message_id
     print(a)
-    cursor.execute("INSERT INTO [dbo].[deleteDump] VALUES ({}, {});".format(orSender, msgID))
+    cursor.execute("INSERT INTO [dbo].[deleteDumps] VALUES ({}, {});".format(orSender, msgID))
     conn.commit()
   elif message.text:
     orSender = message.forward_from.id
     a = app.send_message(THROW_CHAT, message.text)
     msgID = a.message_id
     print(a)
-    cursor.execute("INSERT INTO [dbo].[deleteDump] VALUES ({}, {});".format(orSender, msgID))
+    cursor.execute("INSERT INTO [dbo].[deleteDumps] VALUES ({}, {});".format(orSender, msgID))
     conn.commit()
 
 def exThree(Client, message):
@@ -205,7 +205,7 @@ def frPhoto(Client, message):
   a = message.copy(THROW_CHAT)
   r = a.message_id
   print("PHOTO SEND")
-  cursor.execute("INSERT INTO [dbo].[deleteDump] VALUES ({}, {});".format(sender, r))
+  cursor.execute("INSERT INTO [dbo].[deleteDumps] VALUES ({}, {});".format(sender, r))
   conn.commit()
 
 @app.on_message(filters.chat(LISTEN_CHAT) & filters.regex("#delete"))
@@ -223,7 +223,7 @@ def delete(Client, message, pNum):
   print(message)
   x = message.forward_from.id
   try:
-    cursor.execute("SELECT * FROM [dbo].[deleteDump] WHERE senderId = {}".format(x))
+    cursor.execute("SELECT * FROM [dbo].[deleteDumps] WHERE senderId = {} ORDER BY fessMsgID ASC".format(x))
     row = cursor.fetchall()
     print(row)
     a = int(len(row))
