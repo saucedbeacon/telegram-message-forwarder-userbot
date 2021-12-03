@@ -47,8 +47,7 @@ cursor = conn.cursor(as_dict=True)
 LISTEN_CHAT = int(-1001573969940)
 THROW_CHAT = int(-1001183067327)
 
-@app.on_message(filters.chat(LISTEN_CHAT) & (filters.incoming & (filters.text | filters.photo | filters.video | filters.animation)) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
-
+@app.on_message(filters.chat(-1001573969940) & (filters.incoming & (filters.text | filters.photo | filters.video | filters.animation)) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
 def mOne(client, message):
   caption = None
