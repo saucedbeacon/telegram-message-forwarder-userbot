@@ -244,7 +244,7 @@ def delete(Client, message, pNum):
   except:
     message.reply_text("Penghapusan GAGAL")
 
-@app.on_message(filters.chat(THROW_CHAT) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer") | ~filters.regex("#delete")))
+@app.on_message(filters.chat(LISTEN_CHAT) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer") | ~filters.regex("#delete")))
 
 def work(Client, message) :
   if message.contact != None :
