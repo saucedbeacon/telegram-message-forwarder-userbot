@@ -1,6 +1,7 @@
 import os
 import random
 import datetime
+import pymssql
 import validate
 from validate import vList
 import waiting
@@ -32,7 +33,21 @@ from bot.helper.utils import get_formatted_chat
 ##################################### START MENFESS DISCOUNTFESS ###########################################
 ############################################################################################################
 
-@app.on_message(filters.chat(-1001573969940) & (filters.incoming & (filters.text | filters.photo | filters.video | filters.animation)) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
+waitingUsr= []
+import pymssql
+
+conn = pymssql.connect(server='owsapidb.mssql.somee.com', user='ows-api_SQLLogin_1', password='t22thz9g6w')  
+cursor = conn.cursor(as_dict=True)
+
+
+############################################################################################################
+##################################### START MENFESS DISCOUNTFESS ###########################################
+############################################################################################################
+
+LISTEN_CHAT = int(-1001573969940)
+THROW_CHAT = int(-1001183067327)
+
+@app.on_message(filters.chat(LISTEN_CHAT) & (filters.incoming & (filters.text | filters.photo | filters.video | filters.animation)) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
 
 def mOne(client, message):
@@ -121,18 +136,30 @@ TIME : """ + str(datetime.now()))
   if message.photo or message.video or message.animation :
     message.reply_text("Foto yang anda kirimkan akan diproses secara otomatis. Terimakasih")
     exPhoto(Client, message)
+    global sender
+    sender = message.forward_from.id
   else :
     exFr(Client, message)
 
 def exPhoto(Client, message) :
   app.get_chat("OAHVDONWBWatermarkHandlerbot")
-  message.copy(2056449872)
+  a = message.copy(2056449872)
 
 def exFr(Client, message):
   if message.caption:
-    message.copy(-1001183067327)
+    orSender = message.forward_from.id
+    a = message.copy(THROW_CHAT)
+    msgID = a.message_id
+    print(a)
+    cursor.execute("INSERT INTO [dbo].[deleteDump] VALUES ({}, {});".format(orSender, msgID))
+    conn.commit()
   elif message.text:
-    app.send_message(-1001183067327, message.text)
+    orSender = message.forward_from.id
+    a = app.send_message(THROW_CHAT, message.text)
+    msgID = a.message_id
+    print(a)
+    cursor.execute("INSERT INTO [dbo].[deleteDump] VALUES ({}, {});".format(orSender, msgID))
+    conn.commit()
 
 def exThree(Client, message):
   waitingUsr.append(message.forward_from.id)
@@ -176,10 +203,48 @@ def antiLink(Client, message):
 @app.on_message(filters.chat(2056449872) & filters.incoming & (filters.photo | filters.video | filters.animation) & (filters.regex("#df") | filters.regex("#tanya") | filters.regex("#curhat") | filters.regex("#pamer")))
 
 def frPhoto(Client, message):
-  message.copy(-1001183067327)
+  a = message.copy(THROW_CHAT)
+  r = a.message_id
   print("PHOTO SEND")
+  cursor.execute("INSERT INTO [dbo].[deleteDump] VALUES ({}, {});".format(sender, r))
+  conn.commit()
 
-@app.on_message(filters.chat(-1001573969940) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer")))
+@app.on_message(filters.chat(LISTEN_CHAT) & filters.regex("#delete"))
+def verify(Client, message):
+  cursor.execute("SELECT * FROM [dbo].[phVerify] WHERE userID = {}".format(message.forward_from.id))
+  row = cursor.fetchone()
+  if row == None:
+    message.reply_text("""
+    ANDA BELUM MELAKUKAN VERIFIKASI. SILAKAN MELAKUKAN VERIFIKASI TERLEBIH DAHULU.""")
+  else:
+    pNum = row['phoneNum']
+    delete(Client, message, pNum)
+
+def delete(Client, message, pNum):
+  print(message)
+  x = message.forward_from.id
+  try:
+    cursor.execute("SELECT * FROM [dbo].[deleteDump] WHERE senderId = {}".format(x))
+    row = cursor.fetchall()
+    print(row)
+    a = int(len(row))
+    print(a)
+    fessID = int(row[a-1]['fessMsgID'])
+    app.delete_messages(THROW_CHAT, fessID)
+    message.reply_text(
+    f"""
+    PENGHAPUSAN BERHASIL !
+    Ingat! Jika menfess yang dihapus melanggar rules, maka akan tetap dikenakan sanksi.
+
+    Menfess ID : {a}
+    Menfess Sender : {x}
+    Time : {datetime.now()}
+    Sender Phone Number : {pNum}
+    """)
+  except:
+    message.reply_text("Penghapusan GAGAL")
+
+@app.on_message(filters.chat(THROW_CHAT) & filters.incoming & (~filters.regex("#df") | ~filters.regex("#tanya") | ~filters.regex("#curhat") | ~filters.regex("#pamer") | ~filters.regex("#delete")))
 
 def work(Client, message) :
   if message.contact != None :
@@ -206,7 +271,6 @@ def work(Client, message) :
 ############################################################################################################
 ##################################### END MENFESS DISCOUNTFESS #############################################
 ############################################################################################################
-
 
 ############################################################################################################
 ####################################### START KUKKA BROADCAST ##############################################
